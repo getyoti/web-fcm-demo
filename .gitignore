@@ -5,5 +5,5 @@ dist
 .cache
 .eslintcache
 
-.env
+.env.local*
 *.key

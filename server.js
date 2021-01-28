@@ -1,4 +1,4 @@
-require("dotenv").config();
+require("dotenv-flow").config();
 const express = require("express");
 const bodyParser = require("body-parser");
 const path = require("path");
@@ -7,7 +7,7 @@ const { RequestBuilder, Payload } = require("yoti");
 const app = express();
 app.use(express.static(path.join(__dirname, "build")));
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.json({ limit: "50mb", extended: true }));
+app.use(bodyParser.json({ limit: "10mb", extended: true }));
 
 app.post("/api/predict", function (req, res) {
   const img = req.body.img;
