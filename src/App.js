@@ -75,6 +75,7 @@ const App = () => {
   const reset = () => {
     setImage(undefined);
     setResponse(undefined);
+    setError(undefined)
   };
 
   return (
