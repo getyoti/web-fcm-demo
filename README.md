@@ -4,9 +4,9 @@ Welcome to the Web FCM Demo. The purpose of this repository is to integrate the 
 
 ## Setup
 
-This project need to have a configuration file in order to work. We only need to pass the configuration values as environment variables. We can follow this approach using a `.env` file:
+This project need to have a configuration file in order to work. We only need to pass the configuration values as environment variables. We can follow this approach using a `.env.local` file:
 
-Create a `.env` file in the root:
+Create a `.env.local` file in the root:
 
 ```bash
 PEM_FILE_PATH=
