@@ -4,3 +4,6 @@ dist
 .vscode/
 .cache
 .eslintcache
+
+.env.local*
+*.key
