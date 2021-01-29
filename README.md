@@ -1,10 +1,10 @@
 # web-fcm-demo
 
-Welcome to the Web FCM Demo. The purpose of this repository is to integrate the Face Capture module and perform predictions to the AI Services through Connect. The repository is ready to run in local. This way, any developer could learn how to integrate the module and make requests through Connect.
+Welcome to the Web FCM Demo. The purpose of this repository is to demo the Face Capture Module npm package integration and use the output image to perform a prediction calling Yoti AI Services. The repository is ready to run in local. This way, any developer could learn how to integrate the module and make requests to Yoti Services.
 
 ## Setup
 
-This project need to have a configuration file in order to work. We only need to pass the configuration values as environment variables. We can follow this approach using a `.env.local` file:
+This project needs to have a configuration file in order to work. We only need to pass the configuration values as environment variables. We can follow this approach using a `.env.local` file:
 
 Create a `.env.local` file in the root:
 
@@ -15,12 +15,12 @@ BASE_URL=
 ENDPOINT=
 ```
 
-- **PEM_FILE_PATH:** path to the `.pem` private key needed for Connect.
-- **SDK_ID:** client SDK ID needed for Connect.
+- **PEM_FILE_PATH:** path to the `.pem` private key needed to request Yoti Services.
+- **SDK_ID:** client SDK ID needed to request Yoti Services.
 - **BASE_URL:** base URL for the service to be requested.
 - **ENDPOINT:** endpoint for the service to be requested.
 
-Both `PEM_FILE_PATH` and `SDK_ID` secrets must be obtained following the instructions in [this document](https://developers.yoti.com/yoti/getting-started-hub). Specifically, under `Generate API keys` section.
+Both `PEM_FILE_PATH` and `SDK_ID` secrets are obtained from following the instructions in [this document](https://developers.yoti.com/yoti/getting-started-hub). Specifically, under `Generate API keys` section.
 
 The information required to fill `BASE_URL` and `ENDPOINT` variables can be found [here](https://developers.yoti.com/yoti).
 
@@ -34,7 +34,7 @@ This project was designed to run in it local as a demo. We just need to follow n
     npm install
     ```
 
-2. Start the server that will manage the request through Connect:
+2. Start the server that will manage the request:
 
     ```bash
     node server.js
