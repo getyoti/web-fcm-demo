@@ -1,6 +1,6 @@
 # web-fcm-demo
 
-Welcome to the Web FCM Demo. The purpose of this repository is to demo the Face Capture Module npm package integration and use the output image to perform a prediction calling Yoti AI Services. The repository is ready to run in local. This way, any developer could learn how to integrate the module and make requests to Yoti Services.
+Welcome to the Web FCM Demo. The purpose of this repository is to demo the Face Capture Module npm package integration and use the output image to perform a prediction calling Yoti AI Services.
 
 ## Setup
 
@@ -22,11 +22,11 @@ ENDPOINT=
 
 Both `PEM_FILE_PATH` and `SDK_ID` secrets are obtained from following the instructions in [this document](https://developers.yoti.com/yoti/getting-started-hub). Specifically, under `Generate API keys` section.
 
-The information required to fill `BASE_URL` and `ENDPOINT` variables can be found [here](https://developers.yoti.com/yoti).
+The information required to fill the `BASE_URL` and `ENDPOINT` variables can be found [here](https://developers.yoti.com/yoti).
 
-## Run in local
+## Run locally
 
-This project was designed to run in it local as a demo. We just need to follow next steps in the root path:
+This demo was designed to be run locally. To get started, follow the below steps in the root directory:
 
 1. Install all the dependencies:
 
