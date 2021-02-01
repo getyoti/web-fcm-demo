@@ -6,7 +6,7 @@ Welcome to the Web FCM Demo. The purpose of this repository is to demo the Face 
 
 This project needs to have a configuration file in order to work. We only need to pass the configuration values as environment variables. We can follow this approach using a `.env.local` file:
 
-Create a `.env.local` file in the root:
+Rename `.env.example` to `.env.local` and fill in the configuration values:
 
 ```bash
 PEM_FILE_PATH=
