@@ -40,7 +40,7 @@ This demo was designed to be run locally. To get started, follow the below steps
     node server.js
     ```
 
-3. Start the client:
+3. Start the client in a different terminal window:
 
     ```bash
     npm start
