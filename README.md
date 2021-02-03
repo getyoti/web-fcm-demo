@@ -11,18 +11,16 @@ Rename `.env.example` to `.env.local` and fill in the configuration values:
 ```bash
 PEM_FILE_PATH=
 SDK_ID=
-BASE_URL=
 ENDPOINT=
 ```
 
 - **PEM_FILE_PATH:** path to the `.pem` private key needed to request Yoti Services.
 - **SDK_ID:** client SDK ID needed to request Yoti Services.
-- **BASE_URL:** base URL for the service to be requested.
 - **ENDPOINT:** endpoint for the service to be requested.
 
 Both `PEM_FILE_PATH` and `SDK_ID` secrets are obtained from following the instructions in [this document](https://developers.yoti.com/yoti/getting-started-hub). Specifically, under `Generate API keys` section.
 
-The information required to fill the `BASE_URL` and `ENDPOINT` variables can be found [here](https://developers.yoti.com/yoti-myface/integration-guide).
+The information required to fill the `ENDPOINT` variable can be found [here](https://developers.yoti.com/yoti-myface/integration-guide). The `BASE_URL` (base URL for the service to be requested) is set in the `.env` file.
 
 ## Run locally
 
@@ -40,13 +38,17 @@ This demo was designed to be run locally. To get started, follow the below steps
     node server.js
     ```
 
-3. Start the client:
+3. Start the client in a different terminal window:
 
     ```bash
     npm start
     ```
 
 Now the client is ready to use. You just need to follow the FCM instructions, take a photo and wait for the response.
+
+### Windows
+
+If the client browser does not start automatically or the given address in the terminal does not work, replace `0.0.0.0` by `127.0.0.1`.
 
 ## Face Capture module
 
