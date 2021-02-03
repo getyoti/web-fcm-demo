@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme) =>
       border: "2px solid",
       borderColor: theme.palette.primary.main,
       borderRadius: 20,
-      width: "50%",
+      minWidth: "80%",
       padding: theme.spacing(1),
     },
     error: { borderColor: theme.palette.error.main },
@@ -64,10 +64,15 @@ const App = () => {
     setImage(image);
     service
       .predict(image)
-      .then((res) => setResponse(res.data))
+      .then((res) => setResponse(JSON.stringify(res.data, null, 2)))
       .catch((err) => {
         setError(true);
-        setResponse(err.response.data);
+        const errorMessage = err.response.data;
+        setResponse(
+          typeof errorMessage === "object" && errorMessage !== null
+            ? JSON.stringify(errorMessage, null, 2)
+            : errorMessage
+        );
       });
   };
   const onError = (error) => console.log("Error =", error);
@@ -75,7 +80,7 @@ const App = () => {
   const reset = () => {
     setImage(undefined);
     setResponse(undefined);
-    setError(undefined)
+    setError(undefined);
   };
 
   return (
@@ -113,7 +118,7 @@ const App = () => {
                   >
                     {error ? "Error" : "Response"}:
                   </span>
-                  <pre>{JSON.stringify(response, null, 2)}</pre>
+                  <pre>{response}</pre>
                 </>
               ) : (
                 <CircularProgress size={30} />
