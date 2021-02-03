@@ -31,4 +31,6 @@ app.post("/api/predict", function (req, res) {
     });
 });
 
-app.listen(5000);
+app.listen(5000, () =>
+  console.log("Server started! Listening for client calls...")
+);
