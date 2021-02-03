@@ -57,6 +57,7 @@ module.exports = {
   plugins: [
     new HtmlWebPackPlugin({
       template: "public/index.html",
+      favicon: "public/favicon.png",
     }),
     new CopyPlugin([
       {
