@@ -46,6 +46,10 @@ This demo was designed to be run locally. To get started, follow the below steps
 
 Now the client is ready to use. You just need to follow the FCM instructions, take a photo and wait for the response.
 
+### Windows
+
+If the client browser does not start automatically or the given address in the terminal does not work, replace `0.0.0.0` by `127.0.0.1`.
+
 ## Face Capture module
 
 The `Face Capture` module is a npm package that provides a React component which takes pictures using face detection tools.
