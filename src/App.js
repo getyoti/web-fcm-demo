@@ -92,7 +92,6 @@ const App = () => {
               captureMethod="auto"
               onSuccess={onSuccess}
               onError={onError}
-              format="jpeg"
             />
           </div>
         ) : (
