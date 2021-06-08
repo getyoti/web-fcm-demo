@@ -20,7 +20,7 @@ ENDPOINT=
 
 Both `PEM_FILE_PATH` and `SDK_ID` secrets are obtained from following the instructions in [this document](https://developers.yoti.com/yoti/getting-started-hub). Specifically, under `Generate API keys` section.
 
-The information required to fill the `ENDPOINT` variable can be found [here](https://developers.yoti.com/age-estimation/integration-guide). The `BASE_URL` (base URL for the service to be requested) is set in the `.env` file (check the value to fill the `ENDPOINT` field properly).
+The information required to fill the `ENDPOINT` variable can be found [here](https://developers.yoti.com/age-estimation/integration-guide). The `BASE_URL` (base URL for the service to be requested) is set in the `.env` file (check the value to fill the `ENDPOINT` field).
 
 ## Run locally
 
