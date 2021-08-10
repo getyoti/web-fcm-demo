@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import FaceCapture from "@getyoti/react-face-capture";
+import FaceCapture, { CAPTURE_METHOD } from "@getyoti/react-face-capture";
 import "@getyoti/react-face-capture/index.css";
 import Container from "@material-ui/core/Container";
 import { createStyles, makeStyles } from "@material-ui/core/styles";
@@ -89,7 +89,7 @@ const App = () => {
         {!image ? (
           <div className={classes.faceCapture}>
             <FaceCapture
-              captureMethod="auto"
+              captureMethod={CAPTURE_METHOD.AUTO}
               onSuccess={onSuccess}
               onError={onError}
             />
