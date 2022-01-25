@@ -6,9 +6,11 @@ module.exports = {
   stats: "errors-only",
 
   devServer: {
+    devMiddleware: {
+      stats: "minimal",
+    },
     https: true,
-    contentBase: "./public",
-    stats: "minimal",
+    static: "./public",
     proxy: {
       "/api": "http://localhost:5000",
     },
