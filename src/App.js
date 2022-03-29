@@ -6,6 +6,8 @@ import { createStyles, makeStyles } from "@material-ui/core/styles";
 import { Button, Zoom, CircularProgress } from "@material-ui/core";
 import ReplayIcon from "@material-ui/icons/Replay";
 import { Api } from "./api/api";
+import RadioButtons from "./components/RadioButtons";
+import SecureField from "./components/SecureField";
 import clsx from "clsx";
 
 const service = new Api();
@@ -24,14 +26,24 @@ const useStyles = makeStyles((theme) =>
     button: {
       marginTop: theme.spacing(3),
     },
-    faceCapture: {
-      "& div div": {
-        borderRadius: 20,
-        width: "50vw",
-      },
+    scanContainer: {
+      width: "50vw",
+      marginLeft: "auto",
+      marginRight: "auto",
+    },
+    faceCaptureWrapper: {
+      borderRadius: 20,
+      overflow: "hidden",
+    },
+    options: {
       display: "flex",
-      flexDirection: "column",
-      alignItems: "center",
+      flexDirection: "row",
+      justifyContent: "space-around",
+      marginTop: "15px",
+      paddingTop: "15px",
+      border: "2px solid",
+      borderColor: theme.palette.primary.main,
+      borderRadius: 20,
     },
     response: {
       marginTop: theme.spacing(2),
@@ -55,15 +67,19 @@ const useStyles = makeStyles((theme) =>
 
 const App = () => {
   const [image, setImage] = useState();
+  const [metadataDevice, setMetadataDevice] = useState("");
+  const [levelOfAssurance, setLevelOfAssurance] = useState("");
+  const [secureFlag, setSecureFlag] = useState(false);
   const [response, setResponse] = useState();
   const [error, setError] = useState();
 
   const classes = useStyles();
 
-  const onSuccess = ({ image }) => {
-    setImage(image);
+  const onSuccess = ({ img, secure }) => {
+    setImage(img);
+    const fcmResponse = { img, secure };
     service
-      .predict(image)
+      .predict(fcmResponse, levelOfAssurance, metadataDevice)
       .then((res) => setResponse(JSON.stringify(res.data, null, 2)))
       .catch((err) => {
         setError(true);
@@ -77,6 +93,26 @@ const App = () => {
   };
   const onError = (error) => console.log("Error =", error);
 
+  const assuranceLevels = ["low", "medium", "high"];
+
+  const onLevelOfAssuranceChange = (event) => {
+    if (event.target.value) {
+      setLevelOfAssurance(
+        event.target.value !== levelOfAssurance ? event.target.value : ""
+      );
+    }
+  };
+
+  const metadataDevices = ["laptop", "mobile", "unknown"];
+
+  const onMetadataDeviceChange = (event) => {
+    if (event.target.value) {
+      setMetadataDevice(
+        event.target.value !== metadataDevice ? event.target.value : ""
+      );
+    }
+  };
+
   const reset = () => {
     setImage(undefined);
     setResponse(undefined);
@@ -87,12 +123,31 @@ const App = () => {
     <div className={classes.root}>
       <Container>
         {!image ? (
-          <div className={classes.faceCapture}>
-            <FaceCapture
-              captureMethod={CAPTURE_METHOD.AUTO}
-              onSuccess={onSuccess}
-              onError={onError}
-            />
+          <div className={classes.scanContainer}>
+            <div className={classes.faceCaptureWrapper}>
+              <FaceCapture
+                captureMethod={CAPTURE_METHOD.AUTO}
+                onSuccess={onSuccess}
+                onError={onError}
+                secure={secureFlag}
+              />
+            </div>
+            <div className={classes.options}>
+              <SecureField currentValue={secureFlag} onChange={setSecureFlag} />
+
+              <RadioButtons
+                label="Level of assurance"
+                currentValue={levelOfAssurance}
+                values={assuranceLevels}
+                onClick={onLevelOfAssuranceChange}
+              />
+              <RadioButtons
+                label="Metadata device"
+                currentValue={metadataDevice}
+                values={metadataDevices}
+                onClick={onMetadataDeviceChange}
+              />
+            </div>
           </div>
         ) : (
           <div className={classes.imgContainer}>
@@ -100,7 +155,7 @@ const App = () => {
               <img
                 className={classes.img}
                 src={image}
-                alt="Face Capture Module image"
+                alt="Face Capture Module"
               />
             </Zoom>
             <div
