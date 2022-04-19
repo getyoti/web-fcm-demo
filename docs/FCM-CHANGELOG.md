@@ -1,5 +1,19 @@
 # CHANGELOG
 
+## v1.0.0
+
+Now the vanilla version of the Face Capture Module also exports some useful constants, as the React version does. Here is a list of all of them:
+
+- **CAPTURE_METHOD**
+- **COUNTDOWN_MODES**
+- **ERROR_CODE**
+- **FORMAT_TYPE**
+- **IMAGE_TYPE**
+- **LANGUAGE_CODE**
+- **QUALITY_TYPE**
+
+New constants can be accessed by using `Yoti.<CONSTANT_NAME>`.
+
 ## v1.0.0-beta.3
 
 Fix a package install error which cause `yarn` and older `npm` versions to fail.
