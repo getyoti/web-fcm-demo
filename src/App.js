@@ -118,7 +118,6 @@ const App = () => {
           <div className={classes.scanContainer}>
             <div className={classes.faceCaptureWrapper}>
               <FaceCapture
-                captureMethod={CAPTURE_METHOD.AUTO}
                 onSuccess={onSuccess}
                 onError={onError}
                 secure={secureFlag}
