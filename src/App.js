@@ -65,9 +65,10 @@ const useStyles = makeStyles((theme) =>
   })
 );
 
+const assuranceLevels = ["low", "medium", "high"];
+
 const App = () => {
   const [image, setImage] = useState();
-  const [metadataDevice, setMetadataDevice] = useState("");
   const [levelOfAssurance, setLevelOfAssurance] = useState("");
   const [secureFlag, setSecureFlag] = useState(false);
   const [response, setResponse] = useState();
@@ -79,7 +80,10 @@ const App = () => {
     setImage(img);
     const fcmResponse = { img, secure };
     service
-      .predict(fcmResponse, levelOfAssurance, metadataDevice)
+      .predict({
+        ...fcmResponse,
+        level_of_assurance: levelOfAssurance || undefined,
+      })
       .then((res) => setResponse(JSON.stringify(res.data, null, 2)))
       .catch((err) => {
         setError(true);
@@ -93,22 +97,10 @@ const App = () => {
   };
   const onError = (error) => console.log("Error =", error);
 
-  const assuranceLevels = ["low", "medium", "high"];
-
   const onLevelOfAssuranceChange = (event) => {
     if (event.target.value) {
       setLevelOfAssurance(
         event.target.value !== levelOfAssurance ? event.target.value : ""
-      );
-    }
-  };
-
-  const metadataDevices = ["laptop", "mobile", "unknown"];
-
-  const onMetadataDeviceChange = (event) => {
-    if (event.target.value) {
-      setMetadataDevice(
-        event.target.value !== metadataDevice ? event.target.value : ""
       );
     }
   };
@@ -140,12 +132,6 @@ const App = () => {
                 currentValue={levelOfAssurance}
                 values={assuranceLevels}
                 onClick={onLevelOfAssuranceChange}
-              />
-              <RadioButtons
-                label="Metadata device"
-                currentValue={metadataDevice}
-                values={metadataDevices}
-                onClick={onMetadataDeviceChange}
               />
             </div>
           </div>
