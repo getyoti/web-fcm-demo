@@ -55,6 +55,10 @@ If the client browser does not start automatically or the given address in the t
 The `Face Capture` module is a npm package that provides a React component which takes pictures using face detection tools.
 The usage of this module can be found in `App.js`. You can find more information about how to install the dependency, the API sections, etc [here](https://www.npmjs.com/package/@getyoti/react-face-capture).
 
+Use the secure flag to ensure the image can't be changed once is taken. Have in mind this will make some additional calls to the Yoti servers in order to secure the request.
+
 ## Yoti NodeJS SDK
 
 The `Yoti NodeJS SDK` package allows to integrate a NodeJS back-end with Yoti apps. The usage of this package to perform predictions to a Yoti app can be found in `server.js` file. For more information about this package, check [this link](https://www.npmjs.com/package/yoti).
+
+Level of assurance is an optional parameter of the Yoti antispoofing API used to determine the strictness of the check.
