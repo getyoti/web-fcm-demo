@@ -11,6 +11,7 @@ Now the vanilla version of the Face Capture Module also exports some useful cons
 - **IMAGE_TYPE**
 - **LANGUAGE_CODE**
 - **QUALITY_TYPE**
+- **RESOLUTION_TYPE**
 
 New constants can be accessed by using `Yoti.<CONSTANT_NAME>`.
 
