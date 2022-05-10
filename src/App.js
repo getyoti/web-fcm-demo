@@ -38,6 +38,7 @@ const useStyles = makeStyles((theme) =>
     options: {
       display: "flex",
       flexDirection: "row",
+      flexWrap: "wrap",
       justifyContent: "space-around",
       marginTop: "15px",
       paddingTop: "15px",
