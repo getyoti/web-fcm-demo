@@ -1,9 +1,9 @@
 import React, { useState } from "react";
-import FaceCapture, { CAPTURE_METHOD } from "@getyoti/react-face-capture";
+import FaceCapture from "@getyoti/react-face-capture";
 import "@getyoti/react-face-capture/index.css";
 import Container from "@material-ui/core/Container";
 import { createStyles, makeStyles } from "@material-ui/core/styles";
-import { Button, Zoom, CircularProgress } from "@material-ui/core";
+import { Button, Zoom, CircularProgress, Grid } from "@material-ui/core";
 import ReplayIcon from "@material-ui/icons/Replay";
 import { Api } from "./api/api";
 import RadioButtons from "./components/RadioButtons";
@@ -36,9 +36,6 @@ const useStyles = makeStyles((theme) =>
       overflow: "hidden",
     },
     options: {
-      display: "flex",
-      flexDirection: "row",
-      justifyContent: "space-around",
       marginTop: "15px",
       paddingTop: "15px",
       border: "2px solid",
@@ -123,16 +120,28 @@ const App = () => {
                 secure={secureFlag}
               />
             </div>
-            <div className={classes.options}>
-              <SecureField currentValue={secureFlag} onChange={setSecureFlag} />
 
-              <RadioButtons
-                label="Level of assurance"
-                currentValue={levelOfAssurance}
-                values={assuranceLevels}
-                onClick={onLevelOfAssuranceChange}
-              />
-            </div>
+            <Grid
+              container
+              spacing={1}
+              justifyContent={"space-evenly"}
+              className={classes.options}
+            >
+              <Grid item xs={8} sm={4}>
+                <SecureField
+                  currentValue={secureFlag}
+                  onChange={setSecureFlag}
+                />
+              </Grid>
+              <Grid item xs={8} sm={4}>
+                <RadioButtons
+                  label="Level of assurance"
+                  currentValue={levelOfAssurance}
+                  values={assuranceLevels}
+                  onClick={onLevelOfAssuranceChange}
+                />
+              </Grid>
+            </Grid>
           </div>
         ) : (
           <div className={classes.imgContainer}>
