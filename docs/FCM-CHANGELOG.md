@@ -15,6 +15,10 @@ Now the vanilla version of the Face Capture Module also exports some useful cons
 
 New constants can be accessed by using `Yoti.<CONSTANT_NAME>`.
 
+- Implemented localisation languages
+  - `ur`: Urdu
+  - `hy`: Armenian
+
 ## v1.0.0-beta.3
 
 Fix a package install error which cause `yarn` and older `npm` versions to fail.
