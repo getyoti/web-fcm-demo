@@ -22,7 +22,7 @@ be returned in `onSuccess` callback:
 The flow for the secure mode is the following:
 
 1. Request for a session -> `(GET) https://api.yoti.com/ai/sm/v1/secure-fcm/<version>/token`
-2. Request for the encrypted javascript module -> `(GET) https://api.yoti.com/ai/sm/v1/secure-fcm/<version>/module?s=<token>`
+2. Request for the obfuscated javascript module -> `(GET) https://api.yoti.com/ai/sm/v1/secure-fcm/<version>/module?s=<token>`
 
 Where `<version>` is the current version of the FCM (It is embedded in the
 module) and the `<token>` is the session token the first request returns.
