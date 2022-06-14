@@ -57,6 +57,10 @@ The usage of this module can be found in `App.js`. You can find more information
 
 Use the secure flag to ensure the image can't be changed once is taken. Have in mind this will make some additional calls to the Yoti servers in order to secure the request.
 
+### Secure mode
+
+[Secure mode](./docs/secure-mode.md)
+
 ## Yoti NodeJS SDK
 
 The `Yoti NodeJS SDK` package allows to integrate a NodeJS back-end with Yoti apps. The usage of this package to perform predictions to a Yoti app can be found in `server.js` file. For more information about this package, check [this link](https://www.npmjs.com/package/yoti).
