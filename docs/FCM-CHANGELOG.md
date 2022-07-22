@@ -2,18 +2,66 @@
 
 ## v1.0.0
 
-Now the vanilla version of the Face Capture Module also exports some useful constants, as the React version does. Here is a list of all of them:
+### New features
 
-- **CAPTURE_METHOD**
-- **COUNTDOWN_MODES**
-- **ERROR_CODE**
-- **FORMAT_TYPE**
-- **IMAGE_TYPE**
-- **LANGUAGE_CODE**
-- **QUALITY_TYPE**
-- **RESOLUTION_TYPE**
+- Removed `widthMinConstraint` and `widthIdealConstraint` from the Face Capture Module props.
 
-New constants can be accessed by using `Yoti.<CONSTANT_NAME>`.
+- Added `resolutionType` prop to provide a semantic and easier way of selecting the desired resolution.
+  The possible values for the new prop are:
+
+  - `hd`
+  - `full_hd`
+
+- Added `onReadyForCapture` callback to provide a way for the integrators to know when the module is ready to take images.
+
+- Now the Face Capture Module will stop the process and the camera when the page is hidden.
+
+  - There is a known issue on iPhone Firefox, when opening a new FCM instance in a different tab, that may cause the previous one to freeze.
+
+- Now the vanilla version of the Face Capture Module also exports some useful constants, as the React version does. Here is a list of all of them:
+
+  - **CAPTURE_METHOD**
+  - **COUNTDOWN_MODES**
+  - **ERROR_CODE**
+  - **FORMAT_TYPE**
+  - **IMAGE_TYPE**
+  - **LANGUAGE_CODE**
+  - **QUALITY_TYPE**
+  - **RESOLUTION_TYPE**
+
+    New constants can be accessed by using `Yoti.<CONSTANT_NAME>`.
+
+- Now `countdownMode` has new options:
+
+  - `never` and `always` remains the same.
+  - `auto` has been replaced by `only_mobile` and `only_desktop` which brings extra configuration for all possible scenarios.
+
+- Implemented localisation languages:
+
+  - `ur`: Urdu
+  - `hy`: Armenian
+  - `he`: Hebrew
+
+- Updated localisations languages:
+
+  - `it`: Italian
+  - `es-419`: Latin American Spanish
+
+- Fixed typo in German localisation.
+
+- Manual capture method fallback when slow performance, is now optional with the new `manualCaptureFallback` prop.
+
+- Added type declaration file `index.d.ts` for the Face Capture component and exported properties.
+
+- CustomManualButton and CustomConsentButton properties are not supported in the vanilla version.
+
+### Minor changes
+
+- Removed ellipsis from user feedback messages.
+
+### Fixes
+
+- Fix error added on `FCM 1.0.0-beta.2` causing `JPEG` images to be more compressed than desired on landscape scenario.
 
 ## v1.0.0-beta.3
 
