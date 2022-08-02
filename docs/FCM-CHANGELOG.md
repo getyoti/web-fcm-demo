@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## v1.1.0
+
+### New features
+
+- New way to sign the `onSuccess` result in the secure mode.
+
+### Fixes
+
+- `faceCaptureAssetsRootUrl` is no longer typed as a required prop.
+
 ## v1.0.0
 
 ### New features
