@@ -1,5 +1,24 @@
 # CHANGELOG
 
+## v1.2.0
+
+### New features
+
+- Added two new error codes:
+
+  - `SECURE_SESSION_EXPIRED` is thrown when the secure session token has expired.
+  - `VIDEO_STREAM_INTERRUPTED` is thrown when the camera connection is lost after reaching the ready state.
+
+- Implemented localisation languages:
+
+  - `el`: Greek
+
+- Improve secure mode checks.
+
+- Fix the error when the FCM component is unmounted if it uses the secure mode.
+
+- Use the new Yoti colors for the button and overlay feedback.
+
 ## v1.1.0
 
 ### New features
