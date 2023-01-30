@@ -1,6 +1,6 @@
 {
-  "short_name": "FCM Demo",
-  "name": "Face Capture Module Demo",
+  "short_name": "FCM Demo PoC",
+  "name": "Face Capture Module Demo PoC",
   "start_url": ".",
   "display": "standalone",
   "theme_color": "#000000",

@@ -1,26 +1,10 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
-const path = require("path");
 
 module.exports = {
-  stats: "errors-only",
-
   devServer: {
-    devMiddleware: {
-      stats: "minimal",
-    },
     https: true,
     static: "./public",
-    proxy: {
-      "/api": "http://localhost:5000",
-    },
-  },
-
-  resolve: {
-    alias: {
-      // Avoid having react twice because of the local dependency
-      react: path.resolve("./node_modules/react"),
-    },
   },
 
   module: {
@@ -45,7 +29,6 @@ module.exports = {
               ],
               "@babel/preset-react",
             ],
-            plugins: ["@babel/plugin-proposal-class-properties"],
           },
         },
       },
