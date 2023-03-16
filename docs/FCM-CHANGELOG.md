@@ -1,5 +1,30 @@
 # CHANGELOG
 
+## v1.3.0
+
+### New features
+
+- The secure payload has a new field `verification`.
+- Increased the protection against requests from untrusted devices. The
+  malicious and suspicious requests will return a new error code
+  `UNTRUSTED_SECURE_SESSION`.
+- The `manualCaptureFallback` time has been increased to 10 seconds.
+- Implemented localisation languages:
+
+  - `BG-bg`: Bulgarian
+  - `fa-IR`: Persian
+  - `pt-BR`: Portuguese (Brazil)
+    - `pt` and `pt-BR` are both Brazilian. `pt` is now deprecated and it will be
+      removed on future releases.
+  - `pt-PT`: Portuguese (Portugal)
+
+### Fixes
+
+- Secure session initialisation request is not longer cached.
+- Added missing fields in the typing file.
+- Camera feedback messages are shown only after the camera permissions were
+  giving not before.
+
 ## v1.2.0
 
 ### New features
