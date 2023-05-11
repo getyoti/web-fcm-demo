@@ -7,7 +7,7 @@
 - If the module takes more than 15 seconds to be downloaded, the onError callback will be called with error code `EXCEEDED_TIME_TO_LOAD`. You can modify the timeout to call `onError` by changing the `loadTimeout` property.
 - Implemented localisation languages:
 
-  - `sk-SK`: Slovakian
+  - `sk-SK`: Slovak
   - `hu-HU`: Hungarian
 
 - The translations are available for the manual button.
