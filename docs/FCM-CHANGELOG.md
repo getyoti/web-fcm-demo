@@ -1,11 +1,78 @@
 # CHANGELOG
 
+## v1.4.0
+
+### New features
+
+- If the module takes more than 15 seconds to be downloaded, the onError callback will be called with error code `EXCEEDED_TIME_TO_LOAD`. You can modify the timeout to call `onError` by changing the `loadTimeout` property.
+- Implemented localisation languages:
+
+  - `sk-SK`: Slovakian
+  - `hu-HU`: Hungarian
+
+- The translations are available for the manual button.
+
+- It is possible to change the default button size. There are three options: SMALL, MEDIUM and LARGE. The new field, `buttonSize`, can be used for changing the button size: `buttonSize={BUTTON_SIZE.SMALL}`.
+  MEDIUM and LARGE values are not supported in mobile devices
+
+- It is possible to change some values by css variables. These are the properties that can be changed:
+
+  - --fcm-button-color-background. Changes the background color in buttons.
+  - --fcm-button-text-color. Changes the text color in buttons.
+  - --fcm-button-background-color-hover. Changes the background color for buttons on hover.
+  - --fcm-button-background-color-disabled. Changes the background color for buttons when they are disabled.
+  - --fcm-font-family. Sets the font family.
+  - --fcm-prompt-background-color. Sets the background color in the message prompt.
+
+  > **Note**: We do not recommend changing these css properties, all changes on the font and colors are under the integrator's responsibility and need to be tested by the integrator.
+  > In addition, we can't guarantee external customizations support on new versions of the library
+
+### Notices
+
+- `CustomManualButton` and `CustomConsentButton` are deprecated. They will be removed on 2.0.0 version.
+- Region subtag added to localisation tags. Codes with a single primary subtag (e.g.`en`) are still valid, although we encourage using region-variant codes explicitly.
+  - `ar` --> `ar-XN`
+  - `cs` --> `cs-CZ`
+  - `da` --> `da-DK`
+  - `de` --> `de-DE`
+  - `el` --> `el-GR`
+  - `en` --> `en-GB`
+  - `es` --> `es-ES`
+  - `et` --> `et-EE`
+  - `fi` --> `fi-FI`
+  - `fr` --> `fr-FR`
+  - `he` --> `he-IL`
+  - `hi` --> `hi-IN`
+  - `hy` --> `hy-AM`
+  - `id` --> `id-ID`
+  - `it` --> `it-IT`
+  - `ja` --> `ja-JP`
+  - `ko` --> `ko-KR`
+  - `lt` --> `lt-LT`
+  - `lv` --> `lv-LV`
+  - `ms` --> `ms-MY`
+  - `nb` --> `nb-NO`
+  - `nl` --> `nl-NL`
+  - `pl` --> `pl-PL`
+  - `ro` --> `ro-RO`
+  - `ru` --> `ru-RU`
+  - `sv` --> `sv-SE`
+  - `th` --> `th-TH`
+  - `tr` --> `tr-TR`
+  - `uk` --> `uk-UA`
+  - `ur` --> `ur-PK`
+  - `vi` --> `vi-VN`
+
+### Fixes
+
+- Fix Greek localisation for "Place your face in the frame" feedback.
+
 ## v1.3.0
 
 ### New features
 
 - The secure payload has a new field `verification`.
-- Increased the protection against requests from untrusted devices. The
+- Increased protection against requests from untrusted devices. The
   malicious and suspicious requests will return a new error code
   `UNTRUSTED_SECURE_SESSION`.
 - The `manualCaptureFallback` time has been increased to 10 seconds.
@@ -20,7 +87,7 @@
 
 ### Fixes
 
-- Secure session initialisation request is not longer cached.
+- Secure session initialisation request is no longer cached.
 - Added missing fields in the typing file.
 - Camera feedback messages are shown only after the camera permissions were
   giving not before.
@@ -42,7 +109,7 @@
 
 - Fix the error when the FCM component is unmounted if it uses the secure mode.
 
-- Use the new Yoti colors for the button and overlay feedback.
+- Use the new Yoti colours for the button and overlay feedback.
 
 ## v1.1.0
 
@@ -68,11 +135,11 @@
 
 - Added `onReadyForCapture` callback to provide a way for the integrators to know when the module is ready to take images.
 
-- Now the Face Capture Module will stop the process and the camera when the page is hidden.
+- Now, the Face Capture Module will stop the process and the camera when the page is hidden.
 
-  - There is a known issue on iPhone Firefox, when opening a new FCM instance in a different tab, that may cause the previous one to freeze.
+  - There is a known issue on iPhone Firefox when opening a new FCM instance in a different tab, that may cause the previous one to freeze.
 
-- Now the vanilla version of the Face Capture Module also exports some useful constants, as the React version does. Here is a list of all of them:
+- Now, the vanilla version of the Face Capture Module also exports some useful constants, as the React version does. Here is a list of all of them:
 
   - **CAPTURE_METHOD**
   - **COUNTDOWN_MODES**
@@ -85,7 +152,7 @@
 
     New constants can be accessed by using `Yoti.<CONSTANT_NAME>`.
 
-- Now `countdownMode` has new options:
+- Now, `countdownMode` has new options:
 
   - `never` and `always` remains the same.
   - `auto` has been replaced by `only_mobile` and `only_desktop` which brings extra configuration for all possible scenarios.
@@ -96,7 +163,7 @@
   - `hy`: Armenian
   - `he`: Hebrew
 
-- Updated localisations languages:
+- Updated localisation languages:
 
   - `it`: Italian
   - `es-419`: Latin American Spanish
@@ -119,7 +186,7 @@
 
 ## v1.0.0-beta.3
 
-Fix a package install error which cause `yarn` and older `npm` versions to fail.
+Fix a package install error which causes `yarn` and older `npm` versions to fail.
 
 ## v1.0.0-beta.2
 
@@ -133,7 +200,7 @@ Fix a package install error which cause `yarn` and older `npm` versions to fail.
 
 ### Breaking changes
 
-Now the `onSuccess` callback returns the image in the `img` field instead for
+Now, the `onSuccess` callback returns the image in the `img` field instead of
 `image`.
 
 - Before:
@@ -167,9 +234,9 @@ Now the `onSuccess` callback returns the image in the `img` field instead for
     }
     ```
 
-Now the `CustomButton` has been splited in `CustomManualButton` and `CustomConsentButton` because
+Now, the `CustomButton` has been split into `CustomManualButton` and `CustomConsentButton` because
 of the implementation of the new consent mode. Each of the properties has the same definitions as
-the old `CustomButton`, funtions using `onClick` and `disabled` as props that returns a button
+the old `CustomButton`, functions using `onClick` and `disabled` as props that return a button
 component.
 
 ## v0.6.0
@@ -190,7 +257,7 @@ component.
   - `ko`: Korean
   - `lt`: Lithuanian
   - `ms`: Malay
-  - `uk`: Ukranian
+  - `uk`: Ukrainian
 
 ## v0.4.0
 
@@ -251,7 +318,7 @@ component.
 ### New Features
 
 - Add image quality prop
-- Set JPEG High quality as default image format
+- Set JPEG High quality as the default image format
 - Add languages support:
 
   - EN - English
