@@ -1,5 +1,95 @@
 # CHANGELOG
 
+## v2.0.0-beta.1
+
+### New features
+
+- The secure mode returns an encrypted image by default now. Use `encryptImage`
+  property to return the base64 image in the secure payload. The face capture
+  also provides a new property to get the base64 image preview in the `onSuccess`
+  callback: `returnPreviewImage`.
+
+- New property to identify your Yoti Hub application: `clientSdkId`.
+
+- Secure module deprecation and end support handling.
+
+  - The Face Capture will log a warning message when the secure module version in use
+    becomes deprecated. It will return the error `VERSION_NO_LONGER_AVAILABLE`
+    in the `onError` callback when the support has ended.
+
+- New property to allow auto-reload of the secure session before the session expires: `autoSessionReload`.
+
+- New property to let the user handle errors by retrying several times: `userRetryError`.
+
+- New design:
+
+  - The Face Capture will show a loading screen when it returns a valid
+    image in the `onSuccess` callback or an error screen if it runs the
+    `onError` callback.
+
+  - New Guidance screen that will be shown before the webcam loads. It can be hidden by providing the property `showInitialGuidance` with value `false`
+
+  - New Get Help button in the webcam view. It can be hidden by providing the property `showGetHelpButton` with value `false`.
+
+  - New font family (it can still be changed by `--fcm-font-family` css
+    variable).
+
+  - Improved manual mode user feedback.
+
+  - Improved Face Capture responsiveness.
+
+  - It is possible to customize some styles by using css variables. These are
+    the properties that can be changed:
+
+    - `--fcm-primary-button-background-color` changes the background color in
+      primary buttons (Take picture, Try again, ... ).
+    - `--fcm-primary-button-background-color-hover` changes the background
+      color in primary buttons (Take picture, Try again, ... ) when is hovered.
+    - `--fcm-primary-button-text-color` changes the text color in primary
+      buttons (Take picture, Try again, ... ).
+    - `--fcm-secondary-button-background-color` changes the background color in
+      primary buttons (Get help).
+    - `--fcm-secondary-button-text-color` changes the text color in secondary
+      buttons (Get help).
+    - `--fcm-secondary-button-text-color-hover` changes the text color in
+      secondary buttons (Get help) when the button is hovered.
+    - `--fcm-prompt-text-color` changes the text color in the prompt.
+
+  - The countdown functionality has been removed.
+
+- Implemented localisation languages:
+
+  - `tl-PH`: Tagalog
+  - `zh-CN`: Chinese - Simplified
+
+- The Face Capture style has been encapsulated using shadow Dom. From now on, the only style customization available is through the CSS variables listed in the documentation.
+
+### Breaking changes
+
+- The `onSuccess` callback definition changed to (`(payload: FCMPayload, base64PreviewImage?: string) => {}`).
+
+  - The type of the `payload` argument changed from `FCMResult` to `FCMPayload`.
+
+- Secure mode is now the default mode for the Face Capture (`secure` property value is now `true` by default).
+
+  - The new property `clientSdkId` is required when using secure mode. So will be required by default.
+
+- The property `buttonSize` was removed.
+
+- The property `isConsentRequired` was removed.
+
+- The properties `CustomManualButton` and `CustomConsentButton` were removed.
+
+- The property `countdownMode` was removed.
+
+- The minimum size for the Face Capture in landscape view is 576px.
+
+#### Peer dependencies updates
+
+- Updated `react` dependency version to be at least `16.14.0` and a maximum of `18.2.0`.
+
+- Updated `react-dom` dependency version to be at least `16.14.0` and a maximum of `18.2.0`.
+
 ## v1.4.0
 
 ### New features
@@ -109,7 +199,7 @@
 
 - Fix the error when the FCM component is unmounted if it uses the secure mode.
 
-- Use the new Yoti colours for the button and overlay feedback.
+- Use the new Yoti colors for the button and overlay feedback.
 
 ## v1.1.0
 
