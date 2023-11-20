@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import FaceCapture from "@getyoti/react-face-capture";
-import "@getyoti/react-face-capture/index.css";
 import Container from "@material-ui/core/Container";
 import { createStyles, makeStyles } from "@material-ui/core/styles";
 import { Button, Zoom, CircularProgress, Grid } from "@material-ui/core";
@@ -73,12 +72,11 @@ const App = () => {
 
   const classes = useStyles();
 
-  const onSuccess = ({ img, secure }) => {
-    setImage(img);
-    const fcmResponse = { img, secure };
+  const onSuccess = (payload, base64PreviewImage) => {
+    setImage(base64PreviewImage);
     service
       .predict({
-        ...fcmResponse,
+        ...payload,
         level_of_assurance: levelOfAssurance || undefined,
       })
       .then((res) => setResponse(JSON.stringify(res.data, null, 2)))
@@ -118,6 +116,8 @@ const App = () => {
                 onSuccess={onSuccess}
                 onError={onError}
                 secure={secureFlag}
+                clientSdkId={""}
+                returnPreviewImage={true}
               />
             </div>
 
