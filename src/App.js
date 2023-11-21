@@ -116,7 +116,7 @@ const App = () => {
                 onSuccess={onSuccess}
                 onError={onError}
                 secure={secureFlag}
-                clientSdkId={""}
+                clientSdkId={process.env.SDK_ID}
                 returnPreviewImage={true}
               />
             </div>
