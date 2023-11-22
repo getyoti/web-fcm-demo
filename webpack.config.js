@@ -1,15 +1,7 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
 const path = require("path");
-
-const webpack = require('webpack');
-const dotenv = require('dotenv');
-
-const env = dotenv.config({path: '.env.local'}).parsed;
-const envKeys = Object.keys(env).reduce((prev, next) => {
-  prev[`process.env.${next}`] = JSON.stringify(env[next]);
-  return prev;
-}, {});
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
   stats: "errors-only",
@@ -78,6 +70,8 @@ module.exports = {
         },
       ],
     }),
-    new webpack.DefinePlugin(envKeys)
+    new Dotenv({
+      path: './.env.local',
+    }),
   ],
 };
