@@ -1,5 +1,4 @@
 import React from "react";
-import "@getyoti/react-face-capture/index.css";
 import {
   FormControlLabel,
   FormLabel,

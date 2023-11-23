@@ -1,6 +1,7 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const CopyPlugin = require("copy-webpack-plugin");
 const path = require("path");
+const Dotenv = require('dotenv-webpack');
 
 module.exports = {
   stats: "errors-only",
@@ -68,6 +69,9 @@ module.exports = {
           to: "./assets",
         },
       ],
+    }),
+    new Dotenv({
+      path: './.env.local',
     }),
   ],
 };
