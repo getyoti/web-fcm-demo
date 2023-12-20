@@ -1,5 +1,24 @@
 # CHANGELOG
 
+## v2.0.0
+
+See section [v2.0.0-beta.1](#v200-beta1) with previous changes for version
+`2.0.0`.
+
+- Design:
+
+  - The minimum size for the Face Capture in landscape view is 527px.
+
+  - Improved the help dialogue UI.
+
+- Updated Tagalog localisation message for "Only one face allowed" feedback.
+
+### Fixes
+
+- Apply portrait or landscape custom styles when the user rotates the device.
+- Fix scale flick when the `FaceCapture` loads.
+- Solve Axios dependency CSRF vulnerability.
+
 ## v2.0.0-beta.1
 
 ### New features
