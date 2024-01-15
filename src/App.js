@@ -31,7 +31,6 @@ const useStyles = makeStyles((theme) =>
       marginRight: "auto",
     },
     faceCaptureWrapper: {
-      borderRadius: 20,
       overflow: "hidden",
     },
     options: {
