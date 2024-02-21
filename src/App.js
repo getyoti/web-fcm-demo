@@ -1,13 +1,13 @@
-import React, { useState } from "react";
 import FaceCapture from "@getyoti/react-face-capture";
+import { Button, CircularProgress, Grid, Zoom } from "@material-ui/core";
 import Container from "@material-ui/core/Container";
 import { createStyles, makeStyles } from "@material-ui/core/styles";
-import { Button, Zoom, CircularProgress, Grid } from "@material-ui/core";
 import ReplayIcon from "@material-ui/icons/Replay";
+import clsx from "clsx";
+import React, { useState } from "react";
 import { Api } from "./api/api";
 import RadioButtons from "./components/RadioButtons";
 import SecureField from "./components/SecureField";
-import clsx from "clsx";
 
 const service = new Api();
 
@@ -31,6 +31,7 @@ const useStyles = makeStyles((theme) =>
       marginRight: "auto",
     },
     faceCaptureWrapper: {
+      borderRadius: 20,
       overflow: "hidden",
     },
     options: {
