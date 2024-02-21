@@ -1,5 +1,28 @@
 # CHANGELOG
 
+## v2.1.0
+
+### New features
+
+- Improve security checks.
+- UI improvements on help dialogue.
+- Change feedback message for `OVERCONSTRAINED` and `NO_CAMERA` errors from
+  `Please try again` to `Please try using a different device`.
+
+### Fixes
+
+- Remove the duplication of `Preparing camera` message when the FCM loads.
+- Fix video layout bug on iOS's 17.X version.
+- Improve the `scale` feature to fit better the whole container when the FCM is
+  scaled.
+- Mute Help dialogue video stream.
+- Adjust the distribution of icons and text of `Help` to avoid visual bugs
+  in certain languages.
+
+#### Peer dependencies updates
+
+- Update `axios` dependency from `1.6.2` to `1.6.5`.
+
 ## v2.0.0
 
 See section [v2.0.0-beta.1](#v200-beta1) with previous changes for version
