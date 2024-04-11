@@ -1,5 +1,30 @@
 # CHANGELOG
 
+## v2.2.0
+
+### New features
+
+- New capture mode:
+
+  - Additional `allowBackgroundFaces` configuration property that allows faces
+    to be present in the background when the image is being captured. The face
+    capture will return a cropped image with the main face when set to `true`.
+    Note: This feature is designed for retail terminals and unsuitable for
+    online user's face capture.
+  - Additional `faceSelectionMethod` configuration property to select where the
+    main face can be placed, in the center or anywhere in the image. Note: This
+    feature is designed for retail terminals and unsuitable for online user's
+    face capture.
+
+  **Note:** It is recommend to enable `allowBackgroundFaces` when `faceSelectionMethod` is set to `area`.
+
+- User feedback added and localized for the new `faceSelectionMethod`.
+
+### Fixes
+
+- Recalibration on the face validations order to improve the user experience
+  when capturing the face in challenging light conditions.
+
 ## v2.1.0
 
 ### New features
