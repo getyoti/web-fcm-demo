@@ -1,5 +1,24 @@
 # CHANGELOG
 
+## v2.2.1-dev.1
+
+### Testing features
+
+- Added new properties to allow configuration on faceStabilityCheck
+
+  - `faceStabilityThreshold` configures how strict the stability check will be.
+    The minimum value is 0.4 and the maximum value is 0.9.
+
+  - `numStableFrames` determines how many frames are used for the stability check.
+    The minimum value is 2 and the maximum is 5.
+
+  **Note:** These properties are for testing purposes and will be removed or refactored
+  in future versions.
+
+### Notices
+
+- Improved Face validations performance.
+
 ## v2.2.0
 
 ### New features
