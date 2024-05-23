@@ -1,23 +1,19 @@
 # CHANGELOG
 
-## v2.2.1-dev.1
-
-### Testing features
-
-- Added new properties to allow configuration on faceStabilityCheck
-
-  - `faceStabilityThreshold` configures how strict the stability check will be.
-    The minimum value is 0.4 and the maximum value is 0.9.
-
-  - `numStableFrames` determines how many frames are used for the stability check.
-    The minimum value is 2 and the maximum is 5.
-
-  **Note:** These properties are for testing purposes and will be removed or refactored
-  in future versions.
+## v2.2.1
 
 ### Notices
 
-- Improved Face validations performance.
+- Improved face validations performance, resulting in faster image captures.
+- Improved face stability validation. Now it is easier to capture the image.
+
+### Fixes
+
+- Fixed a bug causing undesired triggers of the `onError` callback when
+  `userRetryError` was set to `false`.
+- A note for `userRetryError` property has been added in [`2.0.1-beta.1`](#v200-beta1) in the breaking changes section.
+- `Right-to-left` language localisations now use the proper alignment.
+- Fix wrong translation for "Move to the center" message for Portuguese (Brazil).
 
 ## v2.2.0
 
@@ -105,7 +101,7 @@ See section [v2.0.0-beta.1](#v200-beta1) with previous changes for version
 
 - New property to allow auto-reload of the secure session before the session expires: `autoSessionReload`.
 
-- New property to let the user handle errors by retrying several times: `userRetryError`.
+- New property to let the user handle errors by retrying several times: `userRetryError`. It is enabled by default.
 
 - New design:
 
@@ -169,6 +165,8 @@ See section [v2.0.0-beta.1](#v200-beta1) with previous changes for version
 - The property `countdownMode` was removed.
 
 - The minimum size for the Face Capture in landscape view is 576px.
+
+- As the `userRetryError` is set to true by default, the `onError` will not be triggered until the user runs out of tries.
 
 #### Peer dependencies updates
 
