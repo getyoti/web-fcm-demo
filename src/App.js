@@ -26,9 +26,17 @@ const useStyles = makeStyles((theme) =>
       marginTop: theme.spacing(3),
     },
     scanContainer: {
-      width: "50vw",
+      width: "66vw",
       marginLeft: "auto",
       marginRight: "auto",
+      // Laptop view
+      '@media (min-width: 992px)': {
+        width: "50vw",
+      },
+      // Tablet view
+      '@media (min-width: 768px)': {
+        width: "57vw",
+      }
     },
     faceCaptureWrapper: {
       borderRadius: 20,
