@@ -1,5 +1,23 @@
 # CHANGELOG
 
+## v2.3.0
+
+### Notices
+
+- Localisation has been thoroughly revised. All languages have been updated to improve correctness and punctuation.
+- Reduce the number of retries to 3 for some errors so that the onError is triggered earlier.
+
+### New features
+
+- Add new property `numStableFrames` to determine how many frames are used for the stability check.
+  The minimum value is 3 and the maximum is 6.
+- Implemented localisation language:
+  - `hr-HR`: Croatian
+
+### Fixes
+
+- Fix text position and margin on initial guidance for large languages.
+
 ## v2.2.1
 
 ### Notices
