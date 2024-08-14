@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v2.3.1
+
+### Fixes
+
+Fixed an issue introduced in v2.3.0 causing the `numStableFrames` property to be marked as mandatory in the module typing.
+
 ## v2.3.0
 
 ### Notices
