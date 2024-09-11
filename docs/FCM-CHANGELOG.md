@@ -1,5 +1,12 @@
 # CHANGELOG
 
+## v2.3.2
+
+### New features
+
+- Add the new _experimental_ property `isScoPortraitCamera` to adapt the module
+  to camera streams with a portrait resolution in SCO (self-checkout) machines.
+
 ## v2.3.1
 
 ### Fixes
