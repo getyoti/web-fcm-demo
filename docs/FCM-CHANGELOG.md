@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## v2.4.0
+
+### New features
+
+- Further enhancements to secure capture and injection attack detection.
+
+### Fixes
+
+- Fix distorted layout on iOS devices.
+
 ## v2.3.2
 
 ### New features
