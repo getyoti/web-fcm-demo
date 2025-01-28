@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## v2.5.0
+
+### New features
+
+- Further enhancements to secure capture and injection attack detection.
+
+### Fixes
+
+- Made the camera load faster.
+- Fixed an issue where loading timeout would not trigger under specific circumstances.
+- Fixed a small misalignment with the icon in the user feedback.
+
 ## v2.4.0
 
 ### New features
