@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## v2.5.1
+
+### New features
+
+- Made the `FaceCapture` component load faster.
+  - The time reduction is most noticeable on devices that were particularly slow
+    in previous versions.
+
+### Fixes
+
+- Fixed the bottom margin of the manual capture button in landscape mode.
+
 ## v2.5.0
 
 ### New features
