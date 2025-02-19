@@ -84,11 +84,11 @@
     cursor: pointer;
     outline: none;
     transition: background-color 0.2s ease-in-out;
+    margin-top: 16px;
 }
 
 .restartButton:hover {
     background-color: #27619b;
-    ;
 }
 
 .restartButton svg {
