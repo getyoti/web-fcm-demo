@@ -1,34 +1,17 @@
 import React from "react";
-import {
-  FormControl,
-  FormControlLabel,
-  FormLabel,
-  RadioGroup,
-  Radio,
-} from "@material-ui/core";
+import * as styles from './RadioButtons.module.css'
 
 const RadioButtons = ({ label, currentValue, values, onClick }) => {
   return (
-    <FormControl>
-      <FormLabel id="radio-buttons-group">{label}</FormLabel>
-      <RadioGroup
-        aria-labelledby={`${label}-radio-buttons-group`}
-        name="controlled-radio-buttons-group"
-        value={currentValue}
-        onClick={onClick}
-      >
-        {values.map((value) => {
-          return (
-            <FormControlLabel
-              key={`${label}-${value}`}
-              value={value}
-              control={<Radio color="primary" />}
-              label={value}
-            />
-          );
-        })}
-      </RadioGroup>
-    </FormControl>
+    <div className={styles.radioGroup}>
+      <legend className={styles.radioGroupLabel}>{label}</legend>
+      {values.map((value) =>
+        <label key={value} className={styles.radioContainer}>
+          <input type="radio" value={value} checked={value === currentValue} onClick={onClick} readOnly/>
+          <span className={styles.radioLabel}>{value}</span>
+        </label>
+      )}
+    </div>
   );
 };
 
