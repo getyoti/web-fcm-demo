@@ -1,74 +1,13 @@
 import FaceCapture from "@getyoti/react-face-capture";
-import { Button, CircularProgress, Grid, Zoom } from "@material-ui/core";
-import Container from "@material-ui/core/Container";
-import { createStyles, makeStyles } from "@material-ui/core/styles";
-import ReplayIcon from "@material-ui/icons/Replay";
-import clsx from "clsx";
 import React, { useState } from "react";
 import { Api } from "./api/api";
 import RadioButtons from "./components/RadioButtons";
 import SecureField from "./components/SecureField";
+import * as styles from './App.module.css'
+import ZoomEffect from "./components/ZoomEffect";
+import classNames from 'classnames';
 
 const service = new Api();
-
-const useStyles = makeStyles((theme) =>
-  createStyles({
-    root: { paddingTop: theme.spacing(3) },
-    img: { width: "100%", borderRadius: 20 },
-    imgContainer: {
-      display: "flex",
-      flexDirection: "column",
-      alignItems: "center",
-      width: "50vw",
-      margin: "auto",
-    },
-    button: {
-      marginTop: theme.spacing(3),
-    },
-    scanContainer: {
-      width: "66vw",
-      marginLeft: "auto",
-      marginRight: "auto",
-      // Laptop view
-      '@media (min-width: 992px)': {
-        width: "50vw",
-      },
-      // Tablet view
-      '@media (min-width: 768px)': {
-        width: "57vw",
-      }
-    },
-    faceCaptureWrapper: {
-      borderRadius: 20,
-      overflow: "hidden",
-    },
-    options: {
-      marginTop: "15px",
-      paddingTop: "15px",
-      border: "2px solid",
-      borderColor: theme.palette.primary.main,
-      borderRadius: 20,
-    },
-    response: {
-      marginTop: theme.spacing(2),
-      minHeight: "180px",
-      border: "2px solid",
-      borderColor: theme.palette.primary.main,
-      borderRadius: 20,
-      minWidth: "80%",
-      padding: theme.spacing(1),
-    },
-    error: { borderColor: theme.palette.error.main },
-    responseTitle: {
-      fontWeight: theme.typography.fontWeightBold,
-      color: theme.palette.primary.main,
-    },
-    responseTitleError: {
-      color: theme.palette.error.main,
-    },
-  })
-);
-
 const assuranceLevels = ["low", "medium", "high"];
 
 const App = () => {
@@ -77,8 +16,6 @@ const App = () => {
   const [secureFlag, setSecureFlag] = useState(false);
   const [response, setResponse] = useState();
   const [error, setError] = useState();
-
-  const classes = useStyles();
 
   const onSuccess = (payload, base64PreviewImage) => {
     setImage(base64PreviewImage);
@@ -115,84 +52,75 @@ const App = () => {
   };
 
   return (
-    <div className={classes.root}>
-      <Container>
-        {!image ? (
-          <div className={classes.scanContainer}>
-            <div className={classes.faceCaptureWrapper}>
-              <FaceCapture
-                onSuccess={onSuccess}
-                onError={onError}
-                secure={secureFlag}
-                clientSdkId={process.env.SDK_ID}
-                returnPreviewImage={true}
-              />
-            </div>
-
-            <Grid
-              container
-              spacing={1}
-              justifyContent={"space-evenly"}
-              className={classes.options}
-            >
-              <Grid item xs={8} sm={4}>
-                <SecureField
-                  currentValue={secureFlag}
-                  onChange={setSecureFlag}
-                />
-              </Grid>
-              <Grid item xs={8} sm={4}>
-                <RadioButtons
-                  label="Level of assurance"
-                  currentValue={levelOfAssurance}
-                  values={assuranceLevels}
-                  onClick={onLevelOfAssuranceChange}
-                />
-              </Grid>
-            </Grid>
+    <div className={styles.scanContainer}>
+      {!image ? (
+        <div className={styles.scanContainer}>
+          <div className={styles.faceCaptureWrapper}>
+            <FaceCapture
+              onSuccess={onSuccess}
+              onError={onError}
+              secure={secureFlag}
+              clientSdkId={process.env.SDK_ID}
+              returnPreviewImage={true}
+            />
           </div>
-        ) : (
-          <div className={classes.imgContainer}>
-            <Zoom in={!!image}>
-              <img
-                className={classes.img}
-                src={image}
-                alt="Face Capture Module"
-              />
-            </Zoom>
-            <div
-              className={clsx(classes.response, {
-                [classes.error]: error,
-              })}
-            >
-              {response ? (
-                <>
-                  <span
-                    className={clsx(classes.responseTitle, {
-                      [classes.responseTitleError]: error,
-                    })}
-                  >
-                    {error ? "Error" : "Response"}:
-                  </span>
-                  <pre>{response}</pre>
-                </>
-              ) : (
-                <CircularProgress size={30} />
-              )}
-            </div>
-            <Button
-              variant="contained"
-              color="primary"
-              size="large"
-              className={classes.button}
-              onClick={reset}
-              endIcon={<ReplayIcon />}
-            >
-              Restart
-            </Button>
+          <div
+            className={styles.optionsDiv}
+          >
+            <SecureField
+              currentValue={secureFlag}
+              onChange={setSecureFlag}
+            />
+            <RadioButtons
+              label="Level of assurance"
+              currentValue={levelOfAssurance}
+              values={assuranceLevels}
+              onClick={onLevelOfAssuranceChange}
+            />
           </div>
-        )}
-      </Container>
+        </div>
+      ) : (
+        <div className={styles.imgContainer}>
+          <ZoomEffect in={!!image}>
+            <img
+              className={styles.img}
+              src={image}
+              alt="Face Capture Module"
+            />
+          </ZoomEffect>
+          <div
+            className={classNames(styles.response, {
+              [styles.error]: error,
+            })}
+          >
+            {response ? (
+              <>
+                <span
+                  className={classNames(styles.responseTitle, {
+                    [styles.responseTitleError]: error,
+                  })}
+                >
+                  {error ? "Error" : "Response"}:
+                </span>
+                <pre>{response}</pre>
+              </>
+            ) : (
+              <div>
+                <div className={styles.loader} />
+              </div>
+            )}
+          </div>
+          <button
+            className={styles.restartButton}
+            onClick={reset}
+          >
+            Restart
+            <svg viewBox="0 0 24 24">
+              <path d="M12 6V1l-7 7 7 7V9c3.3 0 6 2.7 6 6s-2.7 6-6 6-6-2.7-6-6H4c0 4.4 3.6 8 8 8s8-3.6 8-8-3.6-8-8-8z" />
+            </svg>
+          </button>
+        </div>
+      )}
     </div>
   );
 };

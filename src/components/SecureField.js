@@ -1,28 +1,23 @@
 import React from "react";
-import {
-  FormControlLabel,
-  FormLabel,
-  Switch,
-  FormControl,
-} from "@material-ui/core";
+import * as styles from './SecureField.module.css'
 
 const SecureField = ({ currentValue, onChange }) => {
-  const onChangeSecureFlag = (e, value) => {
-    onChange(value);
+  const onChangeSecureFlag = () => {
+    onChange(!currentValue);
   };
 
   return (
-    <FormControl>
-      <FormLabel id="demo-controlled-radio-buttons-group">
-        Secure Mode
-      </FormLabel>
-      <FormControlLabel
-        control={<Switch color="primary" />}
-        label="Secure"
-        checked={currentValue}
-        onChange={onChangeSecureFlag}
-      />
-    </FormControl>
+    <div className={styles.toggleDiv}>
+      <div>
+        <h4 className={styles.title}>Secure mode</h4>
+      </div>
+      <div>
+        <label className={styles.toggle}>
+          <input type="checkbox" value={currentValue} onChange={onChangeSecureFlag} />
+          <span className={styles.slider} />
+        </label>
+      </div>
+    </div>
   );
 };
 
