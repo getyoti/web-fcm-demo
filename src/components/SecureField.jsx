@@ -1,5 +1,5 @@
 import React from "react";
-import * as styles from './SecureField.module.css'
+import styles from "./SecureField.module.css";
 
 const SecureField = ({ currentValue, onChange }) => {
   const onChangeSecureFlag = () => {
@@ -13,7 +13,11 @@ const SecureField = ({ currentValue, onChange }) => {
       </div>
       <div>
         <label className={styles.toggle}>
-          <input type="checkbox" value={currentValue} onChange={onChangeSecureFlag} />
+          <input
+            type="checkbox"
+            value={currentValue}
+            onChange={onChangeSecureFlag}
+          />
           <span className={styles.slider} />
         </label>
       </div>

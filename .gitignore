@@ -7,3 +7,6 @@ dist
 
 .env.local*
 *.key
+
+# The folder where vite copy the assets for the FCM when it builds in dev mode.
+public/assets/face-capture
