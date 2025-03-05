@@ -43,7 +43,7 @@ This demo was designed to be run locally. To get started, follow the below steps
 3. Start the client in a different terminal window:
 
     ```bash
-    npm start
+    npm run dev
     ```
 
 Now the client is ready to use. You just need to follow the FCM instructions, take a photo and wait for the response.
