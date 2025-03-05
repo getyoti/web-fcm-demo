@@ -4,9 +4,7 @@ Welcome to the Web FCM Demo. The purpose of this repository is to demo the Face 
 
 ## Setup
 
-This project needs to have a configuration file in order to work. We only need to pass the configuration values as environment variables. We can follow this approach using a `.env.local` file:
-
-Rename `.env.example` to `.env.local` and fill in the configuration values:
+This project needs to have a configuration file in order to work. We only need to pass the configuration values as environment variables. We can follow this approach using the `.env` or `.env.local` file:
 
 ```bash
 PEM_FILE_PATH=
@@ -22,7 +20,7 @@ Both `PEM_FILE_PATH` and `SDK_ID` secrets are obtained from following the instru
 
 The information required to fill the `ENDPOINT` variable can be found [here](https://developers.yoti.com/age-estimation/integration-guide). The `BASE_URL` (base URL for the service to be requested) is set in the `.env` file (check the value to fill the `ENDPOINT` field).
 
-Set the `clientSdkId` in the [FaceCapture component](https://github.com/getyoti/web-fcm-demo/blob/04738a2a43258594872c28b6bced669c6789ad49/src/App.js#L117) with `SDK_ID` value in the `.env.local` file. 
+Set the `clientSdkId` in the [FaceCapture component](https://github.com/getyoti/web-fcm-demo/blob/04738a2a43258594872c28b6bced669c6789ad49/src/App.js#L117) with `SDK_ID` value in the `.env.local` file.
 
 ## Run locally
 
