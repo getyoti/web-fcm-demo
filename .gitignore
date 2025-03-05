@@ -9,4 +9,4 @@ dist
 *.key
 
 # The folder where vite copies the assets for the FCM when it builds in dev mode.
-public/assets/face-capture
+/public/assets/face-capture
