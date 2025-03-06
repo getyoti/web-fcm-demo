@@ -1,11 +1,11 @@
 import FaceCapture from "@getyoti/react-face-capture";
+import classNames from "classnames";
 import React, { useState } from "react";
 import { Api } from "./api/api";
+import styles from "./App.module.css";
 import RadioButtons from "./components/RadioButtons";
 import SecureField from "./components/SecureField";
-import * as styles from './App.module.css'
 import ZoomEffect from "./components/ZoomEffect";
-import classNames from 'classnames';
 
 const service = new Api();
 const assuranceLevels = ["low", "medium", "high"];
@@ -64,13 +64,8 @@ const App = () => {
               returnPreviewImage={true}
             />
           </div>
-          <div
-            className={styles.optionsDiv}
-          >
-            <SecureField
-              currentValue={secureFlag}
-              onChange={setSecureFlag}
-            />
+          <div className={styles.optionsDiv}>
+            <SecureField currentValue={secureFlag} onChange={setSecureFlag} />
             <RadioButtons
               label="Level of assurance"
               currentValue={levelOfAssurance}
@@ -82,11 +77,7 @@ const App = () => {
       ) : (
         <div className={styles.imgContainer}>
           <ZoomEffect in={!!image}>
-            <img
-              className={styles.img}
-              src={image}
-              alt="Face Capture Module"
-            />
+            <img className={styles.img} src={image} alt="Face Capture Module" />
           </ZoomEffect>
           <div
             className={classNames(styles.response, {
@@ -110,10 +101,7 @@ const App = () => {
               </div>
             )}
           </div>
-          <button
-            className={styles.restartButton}
-            onClick={reset}
-          >
+          <button className={styles.restartButton} onClick={reset}>
             Restart
             <svg viewBox="0 0 24 24">
               <path d="M12 6V1l-7 7 7 7V9c3.3 0 6 2.7 6 6s-2.7 6-6 6-6-2.7-6-6H4c0 4.4 3.6 8 8 8s8-3.6 8-8-3.6-8-8-8z" />
