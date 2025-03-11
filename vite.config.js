@@ -5,7 +5,7 @@ import { fileURLToPath } from "url";
 import { defineConfig, normalizePath } from "vite";
 import EnvironmentPlugin from 'vite-plugin-environment'
 
-const SERVER_PORT_FALLBACK = 5000;
+const PORT = process.env.SERVER_PORT || 5000;
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -13,7 +13,7 @@ const __dirname = path.dirname(__filename);
 export default defineConfig({
   server: {
     proxy: {
-      "/api": `http://localhost:${process.env.SERVER_PORT || SERVER_PORT_FALLBACK}`,
+      "/api": `http://localhost:${PORT}`,
     },
   },
   plugins: [
