@@ -13,7 +13,7 @@ const __dirname = path.dirname(__filename);
 export default defineConfig({
   server: {
     proxy: {
-      "/api": `http://localhost:${import.meta.env.SERVER_PORT || SERVER_PORT_FALLBACK}`,
+      "/api": `http://localhost:${process.env.SERVER_PORT || SERVER_PORT_FALLBACK}`,
     },
   },
   plugins: [
@@ -33,6 +33,6 @@ export default defineConfig({
       ],
       hook: "buildStart",
     }),
-    EnvironmentPlugin(['SDK_ID', 'ENDPOINT', 'PEM_FILE_PATH', 'BASE_URL']),
+    EnvironmentPlugin(['SDK_ID', 'ENDPOINT', 'PEM_FILE_PATH', 'BASE_URL', 'SERVER_PORT']),
   ],
 });
