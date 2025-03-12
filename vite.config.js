@@ -5,6 +5,7 @@ import { fileURLToPath } from "url";
 import { defineConfig, normalizePath } from "vite";
 import EnvironmentPlugin from 'vite-plugin-environment'
 
+const PORT = process.env.SERVER_PORT || 5000;
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -12,7 +13,7 @@ const __dirname = path.dirname(__filename);
 export default defineConfig({
   server: {
     proxy: {
-      "/api": "http://localhost:5000",
+      "/api": `http://localhost:${PORT}`,
     },
   },
   plugins: [
@@ -32,6 +33,6 @@ export default defineConfig({
       ],
       hook: "buildStart",
     }),
-    EnvironmentPlugin(['SDK_ID', 'ENDPOINT', 'PEM_FILE_PATH', 'BASE_URL']),
+    EnvironmentPlugin(['SDK_ID', 'ENDPOINT', 'PEM_FILE_PATH', 'BASE_URL', 'SERVER_PORT']),
   ],
 });

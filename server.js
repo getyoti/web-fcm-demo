@@ -4,6 +4,8 @@ const bodyParser = require("body-parser");
 const path = require("path");
 const { RequestBuilder, Payload } = require("yoti");
 
+const PORT = process.env.SERVER_PORT || 5000;
+
 const app = express();
 app.use(express.static(path.join(__dirname, "build")));
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -32,6 +34,6 @@ app.post("/api/predict", function (req, res) {
     });
 });
 
-app.listen(5000, () =>
-  console.log("Server started! Listening for client calls...")
+app.listen(PORT, () =>
+  console.log(`Server started! Listening for client calls on localhost:${PORT}`)
 );
