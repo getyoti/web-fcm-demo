@@ -5,12 +5,12 @@ import { fileURLToPath } from "url";
 import { defineConfig, normalizePath, loadEnv } from "vite";
 import EnvironmentPlugin from 'vite-plugin-environment'
 
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
 const env = loadEnv('', __dirname, '')
 
 const PORT = env.SERVER_PORT || 5000;
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
 export default defineConfig({
   server: {
