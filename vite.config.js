@@ -8,10 +8,9 @@ import EnvironmentPlugin from 'vite-plugin-environment'
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
-const env = loadEnv('', __dirname, '')
+const env = loadEnv(process.env.NODE_ENV, __dirname, '')
 
 const PORT = env.SERVER_PORT || 5000;
-
 export default defineConfig({
   server: {
     proxy: {
