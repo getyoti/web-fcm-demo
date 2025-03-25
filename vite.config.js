@@ -2,14 +2,15 @@ import react from "@vitejs/plugin-react";
 import path from "path";
 import copy from "rollup-plugin-copy";
 import { fileURLToPath } from "url";
-import { defineConfig, normalizePath } from "vite";
+import { defineConfig, normalizePath, loadEnv } from "vite";
 import EnvironmentPlugin from 'vite-plugin-environment'
-
-const PORT = process.env.SERVER_PORT || 5000;
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
+const env = loadEnv(process.env.NODE_ENV, __dirname, '')
+
+const PORT = env.SERVER_PORT || 5000;
 export default defineConfig({
   server: {
     proxy: {
@@ -33,6 +34,6 @@ export default defineConfig({
       ],
       hook: "buildStart",
     }),
-    EnvironmentPlugin(['SDK_ID', 'ENDPOINT', 'PEM_FILE_PATH', 'BASE_URL', 'SERVER_PORT']),
+    EnvironmentPlugin(['SDK_ID', 'ENDPOINT', 'PEM_FILE_PATH', 'BASE_URL']),
   ],
 });
