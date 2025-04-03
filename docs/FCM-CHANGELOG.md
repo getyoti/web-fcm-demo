@@ -1,5 +1,95 @@
 # CHANGELOG
 
+## v2.6.0
+
+### New features
+
+#### Theming
+
+- Improved theming capabilities:
+  - General theming capabilities have been added through CSS variables:
+    - `--fcm-background-color` Sets the background color.
+    - `--fcm-background-color-variant1` Variant 1 of the background color.
+    - `--fcm-background-color-variant2` Variant 2 of the background color.
+    - `--fcm-background-color-contrast` Color used for contrast elements like separators or the dialog scrollbar.
+    - `--fcm-button-color` Color used for the buttons.
+    - `--fcm-button-color-hover` Color used for the buttons when hovered.
+    - `--fcm-button-color-press` Color used for the buttons when pressed.
+    - `--fcm-text-color-primary` Color used for the primary text.
+    - `--fcm-text-color-secondary` Color used for the secondary text.
+    - `--fcm-font-family` Sets the font family.
+  - Previous css variables to style the FCM have been deprecated, they are still applied but will get removed in future versions.
+    - `--fcm-primary-button-background-color`
+    - `--fcm-primary-button-background-color-hover`
+    - `--fcm-primary-button-text-color`
+    - `--fcm-secondary-button-background-color`
+    - `--fcm-secondary-button-text-color`
+    - `--fcm-secondary-button-text-color-hover`
+    - `--fcm-prompt-text-color`
+    - `--fcm-prompt-background-color`
+  - More extensive theming solutions are also possible. Contact with Yoti for more information about this.
+
+#### UI/UX
+
+- Improved accuracy of certain error states representation
+  - Replaced a misleading `Please connect to the Internet` screen with a `Sorry, there was a problem while loading` one which better describes the nature of the encountered error
+- Improved help dialog UI
+  - Added border-radius to images.
+  - Centered video.
+- Improved Area Mode face detection method making the face capture process easier.
+- Added new user feedback to Area Mode face detection:
+  - "Move your face lower"
+  - "Move your face higher"
+- Added a new message to the loading view to better represent the state of the FCM.
+  - "Running security checks"
+- The `Processing your photo` screen is now displayed for at least 1.5 seconds after capturing the image to avoid flash-like effects.
+
+#### Others
+
+- Added a new property `luminosityCheckLevel`, allowing integrators to adjust the strictness of luminosity
+  validation with more flexible configuration options. Note: This feature is designed for retail terminals
+  and unsuitable for online user's face capture.
+- Added a 20-second timeout to avoid long wait times when the network connection is poor or unavailable.
+
+### Fixes
+
+- Fixed bug causing the Face overlay to be out of position when specific CSS was applied to the FCM.
+- Fixed an issue where the module layout would break when rotating an iPad.
+- Fixed an overlapping issue for some loading screens.
+- Fixed an issue where integrators could set an invalid `numStableFrames` value for non-secure requests.
+
+### Notices
+
+- Localisation has been revised. The following languages have been updated:
+  - ar-XN
+  - bg-BG
+  - cs-CZ
+  - es-ES
+  - fa-IR
+  - fi-FI
+  - fr-FR
+  - he-IL
+  - hi-IN
+  - hu-HU
+  - hy-AM
+  - id-ID
+  - ja-JP
+  - ko-KR
+  - lv-LV
+  - ms-MY
+  - nb-NO
+  - pl-PL
+  - ro-RO
+  - ru-RU
+  - sk-SK
+  - sv-SE
+  - th-TH
+  - tl-PH
+  - tr-TR
+  - uk-UA
+  - vi-VN
+  - zh-CN
+
 ## v2.5.1
 
 ### New features
