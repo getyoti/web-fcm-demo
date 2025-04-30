@@ -1,5 +1,18 @@
 # CHANGELOG
 
+## v2.6.1
+
+### Fixes
+
+- Fixed a bug causing the module to expand in height before capturing the image.
+- Improve containment for layout isolation, preventing CSS leakage.
+- Increase the default `loadTimeout` value from 15000 to 60000 ms.
+- Fixed `loadTimeout` documentation definition.
+
+#### Peer dependencies updates
+
+- Updated `axios` dependency from `1.6.5` to `1.8.4`.
+
 ## v2.6.0
 
 ### New features
