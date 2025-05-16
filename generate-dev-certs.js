@@ -21,4 +21,5 @@ try {
   console.log('Key location:', path.join(sslDir, 'key.pem'));
 } catch (error) {
   console.error('Failed to generate certificate:', error);
+  process.exit(1);
 }
