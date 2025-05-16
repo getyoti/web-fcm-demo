@@ -17,8 +17,6 @@ const App = () => {
   const [response, setResponse] = useState();
   const [error, setError] = useState();
 
-  const clientSdkId = process.env.SDK_ID;
-
   const onSuccess = (payload, base64PreviewImage) => {
     setImage(base64PreviewImage);
     service
@@ -62,7 +60,7 @@ const App = () => {
               onSuccess={onSuccess}
               onError={onError}
               secure={secureFlag}
-              clientSdkId
+              clientSdkId={process.env.SDK_ID}
               returnPreviewImage={true}
             />
           </div>
