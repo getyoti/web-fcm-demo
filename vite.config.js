@@ -4,6 +4,7 @@ import copy from "rollup-plugin-copy";
 import { fileURLToPath } from "url";
 import { defineConfig, normalizePath, loadEnv } from "vite";
 import EnvironmentPlugin from 'vite-plugin-environment'
+import fs from 'fs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -14,7 +15,15 @@ const PORT = env.SERVER_PORT || 5000;
 export default defineConfig({
   server: {
     proxy: {
-      "/api": `http://localhost:${PORT}`,
+      "/api": {
+        target: `https://localhost:${PORT}`,
+        secure: false, // Accept self-signed certificate
+        changeOrigin: true
+      },
+    },
+    https: {
+      key: fs.readFileSync(path.join(__dirname, 'ssl', 'key.pem')),
+      cert: fs.readFileSync(path.join(__dirname, 'ssl', 'cert.pem')),
     },
   },
   plugins: [
@@ -28,7 +37,6 @@ export default defineConfig({
               "./node_modules/@getyoti/react-face-capture/assets/*"
             )
           ),
-
           dest: normalizePath(path.resolve(__dirname, "./public/assets")),
         },
       ],
