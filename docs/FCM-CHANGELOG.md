@@ -1,5 +1,17 @@
 # CHANGELOG
 
+## v2.6.2
+
+### Fixes
+
+- Fixed a bug where the `onSuccess` callback was not called on some iOS versions.
+
+### New features
+
+- Add new localisations:
+  - `bs-BA`: Bosnian
+  - `sr-RS`: Serbian (Latin script)
+
 ## v2.6.1
 
 ### Fixes
