@@ -1,5 +1,37 @@
 # CHANGELOG
 
+## v2.7.0
+
+### New features
+
+#### Multiframe
+
+Multiframe is a new layer of protection added on top of the curren security features that further improves virtual injection detection.
+
+- Adds a new prop `multiframe` to enable and disable this features. (Default:false)
+- The new `multiframe`mode, only works with the `secure` mode and needs the query param `multiframe=true` added to the prediction request.
+- Enabling `multiframe` will increase the payload size.
+- When enabling`multiframe`, the following property values will be ignored and handled internally for optimal performance:
+  - `format`
+  - `resolutionType`
+  - `qualityType`
+  - `imageType`
+  - `allowBackgroundFaces`
+
+#### Others
+
+- Adds a new prop `sessionDuration` which specifies the maximum duration of the session before it times out, regardless of number of retry attempts.
+  - The value must be within 30s and 5m (in milliseconds), and invalid values will trigger an exception.
+- The icon for the multiple faces feedback was changed.
+- `a11yLiveRegionMode` is now deprecated and will be removed in the next major release. Accessibility features like `aria-live` are now handled internally.
+
+### Fixes
+
+- The feedback message is centred so the possibility of overlap with the face layout has been reduced.
+- Localisation has been revised. The following languages have been updated:
+  - `bs-BA`: Bosnian
+  - `sr-RS`: Serbian (Latin script)
+
 ## v2.6.2
 
 ### Fixes
