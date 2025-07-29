@@ -1,7 +1,11 @@
-import axios from "axios";
-
 export class Api {
-  predict = async (body, multiframe) => {
-    return axios.post(`/api/predict?multiframe=${encodeURIComponent(multiframe)}`, { ...body });
+  predict = async (body) => {
+    return fetch("/api/predict", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(body)
+    });
   };
 }
