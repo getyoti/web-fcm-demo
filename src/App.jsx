@@ -1,28 +1,27 @@
 import FaceCapture from "@getyoti/react-face-capture";
 import classNames from "classnames";
 import React, { useState } from "react";
-import { Api } from "./api/api";
+import { predict } from "./api";
 import styles from "./App.module.css";
 import RadioButtons from "./components/RadioButtons";
 import SecureField from "./components/SecureField";
 import ZoomEffect from "./components/ZoomEffect";
 import MultiframeField from "./components/MultiframeField";
 
-const service = new Api();
 const assuranceLevels = ["low", "medium", "high"];
 
 const App = () => {
   const [image, setImage] = useState();
-  const [levelOfAssurance, setLevelOfAssurance] = useState("");
+  const [levelOfAssurance, setLevelOfAssurance] = useState();
   const [secureFlag, setSecureFlag] = useState(false);
   const [multiframeFlag, setMultiframeFlag] = useState(false);
   const [response, setResponse] = useState();
   const [error, setError] = useState();
 
-  const onSuccess = (payload, base64PreviewImage) => {
+  const onSuccess = async (payload, base64PreviewImage) => {
     setImage(base64PreviewImage);
-    service
-      .predict({
+    try {
+      const res = await predict({
         ...payload,
         level_of_assurance: levelOfAssurance || undefined,
       }, multiframeFlag)
@@ -36,13 +35,29 @@ const App = () => {
             : errorMessage
         );
       });
+      const data = await res.json();
+      if (!res.ok) {
+        setError(true);
+        setResponse(
+          typeof data === "object" && data !== null
+            ? JSON.stringify(data, null, 2)
+            : data,
+        );
+      } else {
+        setError(false);
+        setResponse(JSON.stringify(data, null, 2));
+      }
+    } catch (err) {
+      setError(true);
+      setResponse(err.message);
+    }
   };
-  const onError = (error) => console.log("Error =", error);
+  const onError = (err) => console.log("Error =", err);
 
   const onLevelOfAssuranceChange = (event) => {
     if (event.target.value) {
       setLevelOfAssurance(
-        event.target.value !== levelOfAssurance ? event.target.value : ""
+        event.target.value !== levelOfAssurance ? event.target.value : "",
       );
     }
   };
@@ -61,29 +76,29 @@ const App = () => {
         <div className={styles.scanContainer}>
           <div className={styles.faceCaptureWrapper}>
             <FaceCapture
-              onSuccess={onSuccess}
-              onError={onError}
-              secure={secureFlag}
               clientSdkId={process.env.SDK_ID}
-              returnPreviewImage={true}
               multiframe={multiframeFlag}
+              onError={onError}
+              onSuccess={onSuccess}
+              returnPreviewImage
+              secure={secureFlag}
             />
           </div>
           <div className={styles.optionsDiv}>
             <SecureField currentValue={secureFlag} onChange={setSecureFlag} />
             <MultiframeField currentValue={multiframeFlag} onChange={setMultiframeFlag} secureValue={secureFlag} />
             <RadioButtons
-              label="Level of assurance"
               currentValue={levelOfAssurance}
-              values={assuranceLevels}
+              label="Level of assurance"
               onClick={onLevelOfAssuranceChange}
+              values={assuranceLevels}
             />
           </div>
         </div>
       ) : (
         <div className={styles.imgContainer}>
           <ZoomEffect in={!!image}>
-            <img className={styles.img} src={image} alt="Face Capture Module" />
+            <img alt="Face Capture Module" className={styles.img} src={image} />
           </ZoomEffect>
           <div
             className={classNames(styles.response, {
@@ -107,7 +122,7 @@ const App = () => {
               </div>
             )}
           </div>
-          <button className={styles.restartButton} onClick={reset}>
+          <button className={styles.restartButton} onClick={reset} type="button">
             Restart
             <svg viewBox="0 0 24 24">
               <path d="M12 6V1l-7 7 7 7V9c3.3 0 6 2.7 6 6s-2.7 6-6 6-6-2.7-6-6H4c0 4.4 3.6 8 8 8s8-3.6 8-8-3.6-8-8-8z" />

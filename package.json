@@ -1,6 +1,7 @@
 {
   "name": "web-fcm-demo",
   "version": "2.7.0",
+  "type": "module",
   "private": false,
   "dependencies": {
     "@getyoti/react-face-capture": "2.7.0",
@@ -24,13 +25,17 @@
     "generate-certs": "ts-node generate-dev-certs.ts"
   },
   "devDependencies": {
-    "@eslint/js": "^9.21.0",
+    "@eslint/eslintrc": "^3.3.1",
+    "@eslint/js": "^9.32.0",
     "@types/express": "^5.0.3",
     "@types/morgan": "^1.9.10",
     "@types/node": "^24.1.0",
     "@vitejs/plugin-react": "^4.3.4",
     "audit-ci": "6.6.1",
     "eslint": "^9.21.0",
+    "eslint-plugin-import": "^2.32.0",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "eslint-plugin-react": "^7.37.5",
     "eslint-plugin-react-hooks": "^5.1.0",
     "eslint-plugin-react-refresh": "^0.4.19",
     "globals": "^15.15.0",
