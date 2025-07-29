@@ -2,6 +2,8 @@
 
 Welcome to the Web FCM Demo. The purpose of this repository is to demo the Face Capture Module npm package integration and use the output image to perform a prediction calling Yoti AI Services.
 
+This project is built with **TypeScript** for enhanced type safety and developer experience.
+
 ## Setup
 
 This project needs to have a configuration file in order to work. We only need to pass the configuration values as environment variables. We can follow this approach using the `.env` or `.env.local` file:
@@ -47,10 +49,27 @@ If you're using Windows, you might need to:
 mkdir ssl
 
 # Generate the certificates using OpenSSL
-openssl req -x509 -newkey rsa:4096 -keyout ssl/key.pem -out ssl/cert.pem -days 18250 -nodes
+openssl req -x509 -newkey rsa:4096 -keyout ssl/key.pem -out ssl/cert.pem -days 18250 -nodes -subj "/CN=localhost"
 ```
 
 Note: Windows users need to have OpenSSL installed. You can install it using [Chocolatey](https://chocolatey.org/): `choco install openssl`.
+
+## TypeScript Development
+
+This project uses TypeScript for both the server and build scripts. Here are the available commands:
+
+- **`npm run build`** - Compiles TypeScript files to JavaScript in the `dist/` folder
+- **`npm run dev:server`** - Runs the TypeScript server directly with ts-node (recommended for development)
+- **`npm run start`** - Runs the compiled JavaScript server from the `dist/` folder
+- **`npm run generate-certs`** - Generates SSL certificates using the TypeScript version
+
+### TypeScript Configuration
+
+The project includes a `tsconfig.json` file configured for:
+- ES2020 target with CommonJS modules
+- Strict type checking
+- Source maps and declaration files
+- Output to `dist/` directory
 
 ## Run locally
 
@@ -68,13 +87,20 @@ This demo was designed to be run locally. To get started, follow the below steps
     npm run generate-certs
     ```
 
-3. Start the server that will manage the request:
+3. Build the TypeScript server:
 
     ```bash
-    node server.js
+    npm run build
     ```
 
-4. Start the client in a different terminal window:
+4. Start the server that will manage the requests:
+
+    ```bash
+    # For development (with TypeScript hot-reload):
+    npm run dev:server
+    ```
+
+5. Start the client in a different terminal window:
 
     ```bash
     npm run dev
@@ -101,6 +127,6 @@ Use the secure flag to ensure the image can't be changed once is taken. Have in 
 
 ## Yoti NodeJS SDK
 
-The `Yoti NodeJS SDK` package allows to integrate a NodeJS back-end with Yoti apps. The usage of this package to perform predictions to a Yoti app can be found in `server.js` file. For more information about this package, check [this link](https://www.npmjs.com/package/yoti).
+The `Yoti NodeJS SDK` package allows to integrate a NodeJS back-end with Yoti apps. The usage of this package to perform predictions to a Yoti app can be found in the `server.ts` file (TypeScript source) or `dist/server.js` (compiled JavaScript). For more information about this package, check [this link](https://www.npmjs.com/package/yoti).
 
 Level of assurance is an optional parameter of the Yoti antispoofing API used to determine the strictness of the check.
