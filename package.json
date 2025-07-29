@@ -14,7 +14,7 @@
     "yoti": "4.6.0"
   },
   "scripts": {
-    "dev": "vite --host",
+    "dev": "vite --host --open",
     "build": "tsc",
     "start": "node dist/server.js",
     "dev:server": "ts-node server.ts",
