@@ -12,7 +12,7 @@ const assuranceLevels = ["low", "medium", "high"];
 
 const App = () => {
   const [image, setImage] = useState();
-  const [levelOfAssurance, setLevelOfAssurance] = useState();
+  const [levelOfAssurance, setLevelOfAssurance] = useState("");
   const [secureFlag, setSecureFlag] = useState(false);
   const [multiframeFlag, setMultiframeFlag] = useState(false);
   const [response, setResponse] = useState();

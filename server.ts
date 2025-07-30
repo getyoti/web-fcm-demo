@@ -1,5 +1,6 @@
 import dotenv from "dotenv-flow";
-import express, { Request, Response } from "express";
+import express = require("express");
+import { Request, Response } from "express-serve-static-core";
 import bodyParser from "body-parser";
 import path from "path";
 import { RequestBuilder, Payload } from "yoti";
@@ -9,7 +10,12 @@ import morgan from 'morgan';
 
 dotenv.config();
 
-const PORT: number = parseInt(process.env.SERVER_PORT || '5000', 10);
+const rawPort = process.env.SERVER_PORT || '5000';
+const PORT = parseInt(rawPort, 10);
+if (isNaN(PORT) || PORT < 1 || PORT > 65535) {
+  console.error(`Invalid port number: ${rawPort}. Please specify a valid port between 1 and 65535.`);
+  process.exit(1);
+}
 
 const app = express();
 

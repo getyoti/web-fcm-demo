@@ -1,7 +1,6 @@
 {
   "name": "web-fcm-demo",
   "version": "2.7.0",
-  "type": "module",
   "private": false,
   "dependencies": {
     "@getyoti/react-face-capture": "2.7.0",
@@ -9,9 +8,9 @@
     "dotenv-flow": "4.1.0",
     "express": "5.1.0",
     "morgan": "1.10.1",
-    "react": "^16.12.0",
-    "react-dom": "^16.12.0",
-    "yoti": "4.6.0"
+    "react": "16.14.0",
+    "react-dom": "16.14.0",
+    "yoti": "4.11.1"
   },
   "scripts": {
     "dev": "vite --host --open",
@@ -24,24 +23,24 @@
     "generate-certs": "ts-node generate-dev-certs.ts"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "^3.3.1",
-    "@eslint/js": "^9.32.0",
-    "@types/express": "^5.0.3",
-    "@types/morgan": "^1.9.10",
-    "@types/node": "^24.1.0",
-    "@vitejs/plugin-react": "^4.3.4",
+    "@eslint/eslintrc": "3.3.1",
+    "@eslint/js": "9.32.0",
+    "@types/express": "5.0.3",
+    "@types/morgan": "1.9.10",
+    "@types/node": "24.1.0",
+    "@vitejs/plugin-react": "4.3.4",
     "audit-ci": "6.6.1",
-    "eslint": "^9.21.0",
-    "eslint-plugin-import": "^2.32.0",
-    "eslint-plugin-jsx-a11y": "^6.10.2",
-    "eslint-plugin-react": "^7.37.5",
-    "eslint-plugin-react-hooks": "^5.1.0",
-    "eslint-plugin-react-refresh": "^0.4.19",
-    "globals": "^15.15.0",
-    "rollup-plugin-copy": "^3.5.0",
-    "ts-node": "^10.9.2",
-    "typescript": "^5.8.3",
-    "vite": "^6.2.0",
-    "vite-plugin-environment": "^1.1.3"
+    "eslint": "9.32.0",
+    "eslint-plugin-import": "2.32.0",
+    "eslint-plugin-jsx-a11y": "6.10.2",
+    "eslint-plugin-react": "7.37.5",
+    "eslint-plugin-react-hooks": "5.1.0",
+    "eslint-plugin-react-refresh": "0.4.19",
+    "globals": "15.15.0",
+    "rollup-plugin-copy": "3.5.0",
+    "ts-node": "10.9.2",
+    "typescript": "5.8.3",
+    "vite": "6.3.5",
+    "vite-plugin-environment": "1.1.3"
   }
 }
