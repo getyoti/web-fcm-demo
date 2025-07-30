@@ -28,7 +28,7 @@ app.post("/api/predict", function (req, res) {
     .withMethod("POST")
     .withHeader("X-Yoti-Auth-Id", process.env.SDK_ID)
     .withQueryParam("secure", !!secure)
-    .withQueryParam("multiframe", multiframe)
+    .withQueryParam("multiframe", multiframe === 'true')
     .build();
 
   request

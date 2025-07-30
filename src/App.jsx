@@ -71,7 +71,7 @@ const App = () => {
           </div>
           <div className={styles.optionsDiv}>
             <SecureField currentValue={secureFlag} onChange={setSecureFlag} />
-            <MultiframeField currentValue={multiframeFlag} onChange={setMultiframeFlag} secureValue={secureFlag}/>
+            <MultiframeField currentValue={multiframeFlag} onChange={setMultiframeFlag} secureValue={secureFlag} />
             <RadioButtons
               label="Level of assurance"
               currentValue={levelOfAssurance}
