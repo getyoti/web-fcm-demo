@@ -11,15 +11,11 @@ const __dirname = path.dirname(__filename);
 
 const env = loadEnv(process.env.NODE_ENV, __dirname, "");
 
-let PORT;
 if (!env.SERVER_PORT) {
-   throw new Error("SERVER_PORT environment variable is not set.");
-}
-PORT = env.SERVER_PORT;
   throw new Error("SERVER_PORT environment variable is not set.");
-} else {
-  PORT = env.SERVER_PORT;
 }
+const PORT = env.SERVER_PORT;
+
 export default defineConfig({
   server: {
     proxy: {
