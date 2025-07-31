@@ -31,7 +31,7 @@ app.use(bodyParser.json({ limit: "10mb" }));
 
 interface PredictRequestBody {
   secure?: boolean;
-  [key: string]: any;
+  [key: string]: string | number | boolean | null | undefined;
 }
 
 app.post("/api/predict", (req: Request<{}, any, PredictRequestBody>, res: Response) => {

@@ -49,7 +49,7 @@ If you're using Windows, you might need to:
 mkdir ssl
 
 # Generate the certificates using OpenSSL
-openssl req -x509 -newkey rsa:4096 -keyout ssl/key.pem -out ssl/cert.pem -days 18250 -nodes -subj "/CN=localhost"
+openssl req -x509 -newkey rsa:4096 -keyout ssl/key.pem -out ssl/cert.pem -days 365 -nodes -subj "/CN=localhost"
 ```
 
 Note: Windows users need to have OpenSSL installed. You can install it using [Chocolatey](https://chocolatey.org/): `choco install openssl`.
