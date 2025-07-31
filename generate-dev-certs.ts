@@ -1,11 +1,11 @@
-import { execSync } from 'child_process';
+import { spawnSync } from 'child_process';
 import fs from 'fs';
 import path from 'path';
 import os from 'os';
 
 // Create ssl directory if it doesn't exist
 const sslDir: string = path.join(__dirname, 'ssl');
-if (!fs.existsSync(sslDir)) {
+if (!fs.lstatSync(sslDir)?.isDirectory()) {
   fs.mkdirSync(sslDir, { recursive: true });
 }
 
@@ -32,7 +32,7 @@ try {
   ].join(' ');
 
   console.log(`Running command: ${command}`);
-  execSync(command, { stdio: 'inherit' });
+  spawnSync(command, { shell: true, stdio: 'inherit' });
 
   console.log('Certificate generated successfully!');
   console.log('Certificate location:', certPath);
@@ -40,7 +40,5 @@ try {
 } catch (error) {
   console.error('Failed to generate certificate:', error);
   console.error('Make sure OpenSSL is installed on your system.');
-  console.error('On Windows, you can install it via Chocolatey: choco install openssl');
-  console.error('On macOS, you can install it via Homebrew: brew install openssl');
   process.exit(1);
 }
