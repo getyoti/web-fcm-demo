@@ -13,6 +13,9 @@ const env = loadEnv(process.env.NODE_ENV, __dirname, "");
 
 let PORT;
 if (!env.SERVER_PORT) {
+   throw new Error("SERVER_PORT environment variable is not set.");
+}
+PORT = env.SERVER_PORT;
   throw new Error("SERVER_PORT environment variable is not set.");
 } else {
   PORT = env.SERVER_PORT;
