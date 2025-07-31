@@ -10,7 +10,11 @@ import morgan from 'morgan';
 
 dotenv.config();
 
-const rawPort = process.env.SERVER_PORT || '5000';
+const rawPort = process.env.SERVER_PORT;
+if (!rawPort) {
+  console.error("SERVER_PORT environment variable is not set.");
+  process.exit(1);
+}
 const PORT = parseInt(rawPort, 10);
 if (isNaN(PORT) || PORT < 1 || PORT > 65535) {
   console.error(`Invalid port number: ${rawPort}. Please specify a valid port between 1 and 65535.`);

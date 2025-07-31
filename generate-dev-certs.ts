@@ -9,7 +9,7 @@ if (!fs.existsSync(sslDir)) {
   fs.mkdirSync(sslDir, { recursive: true });
 }
 
-console.log('Generating SSL certificate with 50-year validity...');
+console.log('Generating SSL certificate with 1-year validity...');
 
 // Platform-specific subject format
 const isWindows: boolean = os.platform() === 'win32';
@@ -20,13 +20,13 @@ const keyPath: string = path.join(sslDir, 'key.pem');
 const certPath: string = path.join(sslDir, 'cert.pem');
 
 try {
-  // Generate a certificate valid for 50 years (18250 days)
+  // Generate a certificate valid for 1 year (365 days)
   const command: string = [
     'openssl req -x509',
     '-newkey rsa:4096',
     `-keyout "${keyPath}"`,
     `-out "${certPath}"`,
-    '-days 18250',
+    '-days 365',
     '-nodes',
     `-subj ${subjectParam}`
   ].join(' ');

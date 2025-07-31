@@ -22,7 +22,7 @@ Both `PEM_FILE_PATH` and `SDK_ID` secrets are obtained from following the instru
 
 The information required to fill the `ENDPOINT` variable can be found [here](https://developers.yoti.com/age-estimation/integration-guide). The `BASE_URL` (base URL for the service to be requested) is set in the `.env` file (check the value to fill the `ENDPOINT` field).
 
-You can also update the port that the local server is running on, by modifying `SERVER_PORT` environment variable. The default port is `5000`.
+You can also update the port that the local server is running on, by modifying `SERVER_PORT` environment variable. The default port is `5001`.
 
 Set the `clientSdkId` in the [FaceCapture component](https://github.com/getyoti/web-fcm-demo/blob/04738a2a43258594872c28b6bced669c6789ad49/src/App.js#L117) with `SDK_ID` value in the `.env.local` file.
 
@@ -54,23 +54,6 @@ openssl req -x509 -newkey rsa:4096 -keyout ssl/key.pem -out ssl/cert.pem -days 1
 
 Note: Windows users need to have OpenSSL installed. You can install it using [Chocolatey](https://chocolatey.org/): `choco install openssl`.
 
-## TypeScript Development
-
-This project uses TypeScript for both the server and build scripts. Here are the available commands:
-
-- **`npm run build`** - Compiles TypeScript files to JavaScript in the `dist/` folder
-- **`npm run dev:server`** - Runs the TypeScript server directly with ts-node (recommended for development)
-- **`npm run start`** - Runs the compiled JavaScript server from the `dist/` folder
-- **`npm run generate-certs`** - Generates SSL certificates using the TypeScript version
-
-### TypeScript Configuration
-
-The project includes a `tsconfig.json` file configured for:
-- ES2020 target with CommonJS modules
-- Strict type checking
-- Source maps and declaration files
-- Output to `dist/` directory
-
 ## Run locally
 
 This demo was designed to be run locally. To get started, follow the below steps in the root directory:
@@ -87,20 +70,14 @@ This demo was designed to be run locally. To get started, follow the below steps
     npm run generate-certs
     ```
 
-3. Build the TypeScript server:
-
-    ```bash
-    npm run build
-    ```
-
-4. Start the server that will manage the requests:
+3. Start the server that will manage the requests:
 
     ```bash
     # For development (with TypeScript hot-reload):
     npm run dev:server
     ```
 
-5. Start the client in a different terminal window:
+4. Start the client in a different terminal window:
 
     ```bash
     npm run dev

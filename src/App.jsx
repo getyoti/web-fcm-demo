@@ -1,7 +1,6 @@
 import FaceCapture from "@getyoti/react-face-capture";
 import classNames from "classnames";
 import React, { useState } from "react";
-import { predict } from "./api";
 import styles from "./App.module.css";
 import RadioButtons from "./components/RadioButtons";
 import SecureField from "./components/SecureField";
@@ -12,11 +11,20 @@ const assuranceLevels = ["low", "medium", "high"];
 
 const App = () => {
   const [image, setImage] = useState();
-  const [levelOfAssurance, setLevelOfAssurance] = useState("");
+  const [levelOfAssurance, setLevelOfAssurance] = useState();
   const [secureFlag, setSecureFlag] = useState(false);
   const [multiframeFlag, setMultiframeFlag] = useState(false);
   const [response, setResponse] = useState();
   const [error, setError] = useState();
+
+  const predict = async (body) =>
+    fetch("/api/predict", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(body),
+    });
 
   const onSuccess = async (payload, base64PreviewImage) => {
     setImage(base64PreviewImage);
