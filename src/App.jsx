@@ -17,8 +17,8 @@ const App = () => {
   const [response, setResponse] = useState();
   const [error, setError] = useState();
 
-  const predict = async (body) =>
-    fetch("/api/predict", {
+  const predict = async (body, multiframe) =>
+    fetch(`/api/predict${multiframe ? "?multiframe=true" : "" }`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -32,17 +32,8 @@ const App = () => {
       const res = await predict({
         ...payload,
         level_of_assurance: levelOfAssurance || undefined,
-      }, multiframeFlag)
-      .then((res) => setResponse(JSON.stringify(res.data, null, 2)))
-      .catch((err) => {
-        setError(true);
-        const errorMessage = err.response.data;
-        setResponse(
-          typeof errorMessage === "object" && errorMessage !== null
-            ? JSON.stringify(errorMessage, null, 2)
-            : errorMessage
-        );
-      });
+      }, multiframeFlag);
+
       const data = await res.json();
       if (!res.ok) {
         setError(true);
