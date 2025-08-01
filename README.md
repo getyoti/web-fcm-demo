@@ -20,7 +20,7 @@ Both `PEM_FILE_PATH` and `SDK_ID` secrets are obtained from following the instru
 
 The information required to fill the `ENDPOINT` variable can be found [here](https://developers.yoti.com/age-estimation/integration-guide). The `BASE_URL` (base URL for the service to be requested) is set in the `.env` file (check the value to fill the `ENDPOINT` field).
 
-You can also update the port that the local server is running on, by modifying `SERVER_PORT` environment variable. The default port is `5000`.
+You can also update the port that the local server is running on, by modifying `SERVER_PORT` environment variable. The default port is `5001`.
 
 Set the `clientSdkId` in the [FaceCapture component](https://github.com/getyoti/web-fcm-demo/blob/04738a2a43258594872c28b6bced669c6789ad49/src/App.js#L117) with `SDK_ID` value in the `.env.local` file.
 
@@ -47,7 +47,7 @@ If you're using Windows, you might need to:
 mkdir ssl
 
 # Generate the certificates using OpenSSL
-openssl req -x509 -newkey rsa:4096 -keyout ssl/key.pem -out ssl/cert.pem -days 18250 -nodes
+openssl req -x509 -newkey rsa:4096 -keyout ssl/key.pem -out ssl/cert.pem -days 365 -nodes -subj "/CN=localhost"
 ```
 
 Note: Windows users need to have OpenSSL installed. You can install it using [Chocolatey](https://chocolatey.org/): `choco install openssl`.
@@ -68,10 +68,11 @@ This demo was designed to be run locally. To get started, follow the below steps
     npm run generate-certs
     ```
 
-3. Start the server that will manage the request:
+3. Start the server that will manage the requests:
 
     ```bash
-    node server.js
+    # For development (with TypeScript hot-reload):
+    npm run dev:server
     ```
 
 4. Start the client in a different terminal window:
@@ -101,6 +102,6 @@ Use the secure flag to ensure the image can't be changed once is taken. Have in 
 
 ## Yoti NodeJS SDK
 
-The `Yoti NodeJS SDK` package allows to integrate a NodeJS back-end with Yoti apps. The usage of this package to perform predictions to a Yoti app can be found in `server.js` file. For more information about this package, check [this link](https://www.npmjs.com/package/yoti).
+The `Yoti NodeJS SDK` package allows to integrate a NodeJS back-end with Yoti apps. The usage of this package to perform predictions to a Yoti app can be found in the `server.ts` file (TypeScript source) or `dist/server.js` (compiled JavaScript). For more information about this package, check [this link](https://www.npmjs.com/package/yoti).
 
 Level of assurance is an optional parameter of the Yoti antispoofing API used to determine the strictness of the check.
