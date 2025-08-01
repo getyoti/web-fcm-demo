@@ -21,18 +21,19 @@ const certPath: string = path.join(sslDir, 'cert.pem');
 
 try {
   // Generate a certificate valid for 1 year (365 days)
-  const command: string = [
-    'openssl req -x509',
-    '-newkey rsa:4096',
-    `-keyout "${keyPath}"`,
-    `-out "${certPath}"`,
-    '-days 365',
+  const command = "openssl";
+  const args = [
+    'req', '-x509',
+    '-newkey', 'rsa:4096',
+    '-keyout', keyPath,
+    '-out', certPath,
+    '-days', '365',
     '-nodes',
-    `-subj ${subjectParam}`
-  ].join(' ');
+    '-subj', subjectParam,
+  ];
 
-  console.log(`Running command: ${command}`);
-  spawnSync(command, { shell: true, stdio: 'inherit' });
+  console.log('Generating certificate');
+  spawnSync(command, args, { encoding: 'utf-8', stdio: 'inherit' });
 
   console.log('Certificate generated successfully!');
   console.log('Certificate location:', certPath);
