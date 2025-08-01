@@ -18,6 +18,7 @@ app.use(bodyParser.json({ limit: "10mb", extended: true }));
 
 app.post("/api/predict", function (req, res) {
   const secure = req.body.secure;
+  const multiframe = req.query.multiframe;
 
   const request = new RequestBuilder()
     .withBaseUrl(process.env.BASE_URL)
@@ -27,6 +28,7 @@ app.post("/api/predict", function (req, res) {
     .withMethod("POST")
     .withHeader("X-Yoti-Auth-Id", process.env.SDK_ID)
     .withQueryParam("secure", !!secure)
+    .withQueryParam("multiframe", multiframe === 'true')
     .build();
 
   request

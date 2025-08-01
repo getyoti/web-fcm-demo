@@ -6,6 +6,7 @@ import styles from "./App.module.css";
 import RadioButtons from "./components/RadioButtons";
 import SecureField from "./components/SecureField";
 import ZoomEffect from "./components/ZoomEffect";
+import MultiframeField from "./components/MultiframeField";
 
 const service = new Api();
 const assuranceLevels = ["low", "medium", "high"];
@@ -14,6 +15,7 @@ const App = () => {
   const [image, setImage] = useState();
   const [levelOfAssurance, setLevelOfAssurance] = useState("");
   const [secureFlag, setSecureFlag] = useState(false);
+  const [multiframeFlag, setMultiframeFlag] = useState(false);
   const [response, setResponse] = useState();
   const [error, setError] = useState();
 
@@ -23,7 +25,7 @@ const App = () => {
       .predict({
         ...payload,
         level_of_assurance: levelOfAssurance || undefined,
-      })
+      }, multiframeFlag)
       .then((res) => setResponse(JSON.stringify(res.data, null, 2)))
       .catch((err) => {
         setError(true);
@@ -49,6 +51,8 @@ const App = () => {
     setImage(undefined);
     setResponse(undefined);
     setError(undefined);
+    setMultiframeFlag(false);
+    setSecureFlag(false);
   };
 
   return (
@@ -62,10 +66,12 @@ const App = () => {
               secure={secureFlag}
               clientSdkId={process.env.SDK_ID}
               returnPreviewImage={true}
+              multiframe={multiframeFlag}
             />
           </div>
           <div className={styles.optionsDiv}>
             <SecureField currentValue={secureFlag} onChange={setSecureFlag} />
+            <MultiframeField currentValue={multiframeFlag} onChange={setMultiframeFlag} secureValue={secureFlag} />
             <RadioButtons
               label="Level of assurance"
               currentValue={levelOfAssurance}
