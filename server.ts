@@ -35,19 +35,26 @@ interface PredictRequestBody {
 }
 
 app.post("/api/predict", (req: Request<{}, any, PredictRequestBody>, res: Response) => {
-  const secure = req.body.secure;
-  const multiframe = req.query.multiframe;
+  const securePayload = req.body.secure;
+  const multiframe = Boolean(req.query.multiframe);
 
-  const request = new RequestBuilder()
+  const baseRequest = new RequestBuilder()
     .withBaseUrl(process.env.BASE_URL!)
     .withPemFilePath(process.env.PEM_FILE_PATH!)
     .withEndpoint(process.env.ENDPOINT!)
+    .withPost()
     .withPayload(new Payload(req.body))
-    .withMethod("POST")
-    .withHeader("X-Yoti-Auth-Id", process.env.SDK_ID!)
-    .withQueryParam("secure", !!secure)
-    .withQueryParam("multiframe", multiframe === 'true')
-    .build();
+    .withQueryParam("secure", !!securePayload)
+
+  if (process.env.SDK_ID) {
+    baseRequest.withHeader("X-Yoti-Auth-Id", process.env.SDK_ID!);
+  }
+
+  if (multiframe) {
+    baseRequest.withQueryParam("multiframe", 'true');
+  }
+
+  const request = baseRequest.build();
 
   request
     .execute()
