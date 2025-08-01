@@ -2,8 +2,6 @@
 
 Welcome to the Web FCM Demo. The purpose of this repository is to demo the Face Capture Module npm package integration and use the output image to perform a prediction calling Yoti AI Services.
 
-This project is built with **TypeScript** for enhanced type safety and developer experience.
-
 ## Setup
 
 This project needs to have a configuration file in order to work. We only need to pass the configuration values as environment variables. We can follow this approach using the `.env` or `.env.local` file:

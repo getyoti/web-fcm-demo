@@ -3,11 +3,9 @@ import fs from 'fs';
 import path from 'path';
 import os from 'os';
 
-// Create ssl directory if it doesn't exist
 const sslDir: string = path.join(__dirname, 'ssl');
-if (!fs.lstatSync(sslDir)?.isDirectory()) {
-  fs.mkdirSync(sslDir, { recursive: true });
-}
+// Create ssl directory if it doesn't exist
+fs.existsSync(sslDir) && fs.lstatSync(sslDir)?.isDirectory() || fs.mkdirSync(sslDir, { recursive: true });
 
 console.log('Generating SSL certificate with 1-year validity...');
 
