@@ -4,6 +4,7 @@
   "private": false,
   "dependencies": {
     "@getyoti/react-face-capture": "2.7.0",
+    "body-parser": "2.2.0",
     "classnames": "2.5.1",
     "dotenv-flow": "4.1.0",
     "express": "5.1.0",
@@ -19,13 +20,13 @@
     "dev:server": "ts-node server.ts",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
+    "typecheck": "tsc --noEmit",
     "preview": "vite preview",
     "audit": "audit-ci -c",
     "generate-certs": "ts-node generate-dev-certs.ts",
     "prepare": "husky"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "3.3.1",
     "@eslint/js": "9.32.0",
     "@types/express": "5.0.3",
     "@types/morgan": "1.9.10",
