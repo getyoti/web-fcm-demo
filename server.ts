@@ -1,5 +1,6 @@
 import dotenv from "dotenv-flow";
 import express = require("express");
+import { Request, Response } from "express-serve-static-core";
 import bodyParser from "body-parser";
 import path from "path";
 import { RequestBuilder, Payload } from "yoti";
@@ -33,7 +34,7 @@ interface PredictRequestBody {
   [key: string]: string | number | boolean | null | undefined;
 }
 
-app.post("/api/predict", (req, res) => {
+app.post("/api/predict", (req: Request<{}, any, PredictRequestBody>, res: Response) => {
   const securePayload = req.body.secure;
   const multiframe = Boolean(req.query.multiframe);
 
