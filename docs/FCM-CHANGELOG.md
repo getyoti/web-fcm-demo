@@ -1,5 +1,24 @@
 # CHANGELOG
 
+## v2.8.0
+
+### New features
+
+- Axios has been removed and now fetch is used across the app.
+- Improve user guidance in `center` mode.
+  - Extra on-screen feedback is displayed if the user has not placed their face in the frame after a certain amount of time.
+- Add new localisation:
+  - `ka-GE`: Georgian
+  - `sr-RS`: Serbian (Cyrillic script)
+  - `sr-Latn-RS`: Serbian (Latin script)
+- Localisation has been revised. The following languages have been updated:
+  - `el-GR`: Greek
+  - `bs-BA`: Bosnian
+- Improve user feedback stability.
+- Improve documentation:
+  - `returnPreviewImage` property. Highlighting that the preview image is not signed and should only be used for user feedback.
+  - `EXCEEDED_TIME_TO_LOAD` error. Making it more straightforward.
+
 ## v2.7.0
 
 ### New features
