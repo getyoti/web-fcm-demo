@@ -107,6 +107,12 @@
         l20-2 1.6s infinite linear;
 }
 
+.iframe {
+    width: 100%;
+    height: 600px;
+    border: none;
+}
+
 @keyframes l20-1 {
     0% {
         clip-path: polygon(50% 50%, 0 0, 50% 0%, 50% 0%, 50% 0%, 50% 0%, 50% 0%)

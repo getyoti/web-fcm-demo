@@ -6,6 +6,7 @@ import RadioButtons from "./components/RadioButtons";
 import SecureField from "./components/SecureField";
 import ZoomEffect from "./components/ZoomEffect";
 import MultiframeField from "./components/MultiframeField";
+import UseIframeField from "./components/UseIframeField";
 
 const assuranceLevels = ["low", "medium", "high"];
 
@@ -14,6 +15,7 @@ const App = () => {
   const [levelOfAssurance, setLevelOfAssurance] = useState();
   const [secureFlag, setSecureFlag] = useState(false);
   const [multiframeFlag, setMultiframeFlag] = useState(false);
+  const [useIframe, setUseIframe] = useState(false);
   const [response, setResponse] = useState();
   const [error, setError] = useState();
 
@@ -67,24 +69,45 @@ const App = () => {
     setError(undefined);
     setMultiframeFlag(false);
     setSecureFlag(false);
+    setUseIframe(false);
   };
+
+  const FaceCaptureComponent = () => (
+    <FaceCapture
+      clientSdkId={process.env.SDK_ID}
+      multiframe={multiframeFlag}
+      onError={onError}
+      onSuccess={onSuccess}
+      returnPreviewImage
+      secure={secureFlag}
+    />
+  );
+
+  // const policiesAllOff = "accelerometer 'none'; ambient-light-sensor 'none'; aria-notify 'none'; attribution-reporting 'none'; autoplay 'none'; bluetooth 'none'; browsing-topics 'none'; camera 'none'; captured-surface-control 'none'; compute-pressure 'none'; cross-origin-isolated 'none'; deferred-fetch 'none'; deferred-fetch-minimal 'none'; display-capture 'none'; encrypted-media 'none'; fullscreen 'none'; gamepad 'none'; geolocation 'none'; gyroscope 'none'; hid 'none'; identity-credentials-get 'none'; idle-detection 'none'; language-detector 'none'; local-fonts 'none'; magnetometer 'none'; microphone 'none'; midi 'none'; on-device-speech-recognition 'none'; otp-credentials 'none'; payment 'none'; picture-in-picture 'none'; publickey-credentials-create 'none'; publickey-credentials-get 'none'; screen-wake-lock 'none'; serial 'none'; speaker-selection 'none'; storage-access 'none'; summarizer 'none'; translator 'none'; usb 'none'; web-share 'none'; window-management 'none'; xr-spatial-tracking 'none'";
+
+  // const policiesOnlyCamera = "accelerometer 'none'; ambient-light-sensor 'none'; aria-notify 'none'; attribution-reporting 'none'; autoplay 'none'; bluetooth 'none'; browsing-topics 'none'; camera *; captured-surface-control 'none'; compute-pressure 'none'; cross-origin-isolated 'none'; deferred-fetch 'none'; deferred-fetch-minimal 'none'; display-capture 'none'; encrypted-media 'none'; fullscreen 'none'; gamepad 'none'; geolocation 'none'; gyroscope 'none'; hid 'none'; identity-credentials-get 'none'; idle-detection 'none'; language-detector 'none'; local-fonts 'none'; magnetometer 'none'; microphone 'none'; midi 'none'; on-device-speech-recognition 'none'; otp-credentials 'none'; payment 'none'; picture-in-picture 'none'; publickey-credentials-create 'none'; publickey-credentials-get 'none'; screen-wake-lock 'none'; serial 'none'; speaker-selection 'none'; storage-access 'none'; summarizer 'none'; translator 'none'; usb 'none'; web-share 'none'; window-management 'none'; xr-spatial-tracking 'none'";
+
+  const policiesAllOn = "accelerometer *; ambient-light-sensor *; aria-notify *; attribution-reporting *; autoplay *; bluetooth *; browsing-topics *; camera *; captured-surface-control *; compute-pressure *; cross-origin-isolated *; deferred-fetch *; deferred-fetch-minimal *; display-capture *; encrypted-media *; fullscreen *; gamepad *; geolocation *; gyroscope *; hid *; identity-credentials-get *; idle-detection *; language-detector *; local-fonts *; magnetometer *; microphone *; midi *; on-device-speech-recognition *; otp-credentials *; payment *; picture-in-picture *; publickey-credentials-create *; publickey-credentials-get *; screen-wake-lock *; serial *; speaker-selection *; storage-access *; summarizer *; translator *; usb *; web-share *; window-management *; xr-spatial-tracking *";
 
   return (
     <div className={styles.scanContainer}>
       {!image ? (
         <div className={styles.scanContainer}>
           <div className={styles.faceCaptureWrapper}>
-            <FaceCapture
-              clientSdkId={process.env.SDK_ID}
-              multiframe={multiframeFlag}
-              onError={onError}
-              onSuccess={onSuccess}
-              returnPreviewImage
-              secure={secureFlag}
-            />
+            {useIframe ? (
+              <iframe
+                title="Face Capture iframe"
+                className={styles.iframe}
+                allow={policiesAllOn}
+                src="https://localhost:6006/iframe.html?args=clientSdkId:2ba147ae-b2ac-40ca-aef4-b3ea548a3d6f&id=face-capture-default--default&viewMode=story"
+              />
+            ) : (
+              <FaceCaptureComponent />
+            )}
           </div>
           <div className={styles.optionsDiv}>
             <SecureField currentValue={secureFlag} onChange={setSecureFlag} />
+            <UseIframeField currentValue={useIframe} onChange={setUseIframe} />
             <MultiframeField currentValue={multiframeFlag} onChange={setMultiframeFlag} secureValue={secureFlag} />
             <RadioButtons
               currentValue={levelOfAssurance}
