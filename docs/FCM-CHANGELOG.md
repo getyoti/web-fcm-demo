@@ -17,7 +17,6 @@
 
 - Fix visual bug when taking a picture in manual mode. The feedback prompt is now highlighted correctly.
 
-
 ## v2.8.0
 
 ### New features
