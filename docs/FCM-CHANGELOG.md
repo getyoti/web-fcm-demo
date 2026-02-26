@@ -1,5 +1,22 @@
 # CHANGELOG
 
+## v2.8.1
+
+### New features
+
+- Add new localisation:
+
+  - `ta-SG`: Tamil (Singapore)
+  - `zh-SG`: Chinese (Singapore)
+
+- Update UI component library to enhance theming stability.
+- Improve usability for keyboard only users.
+- Improve screen readers compatibility.
+
+### Fixes
+
+- Fix visual bug when taking a picture in manual mode. The feedback prompt is now highlighted correctly.
+
 ## v2.8.0
 
 ### New features
