@@ -4,7 +4,7 @@
   "private": false,
   "dependencies": {
     "@getyoti/react-face-capture": "2.8.1",
-    "body-parser": "2.2.0",
+    "body-parser": "2.2.2",
     "classnames": "2.5.1",
     "dotenv-flow": "4.1.0",
     "express": "5.1.0",
