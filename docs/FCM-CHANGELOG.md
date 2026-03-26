@@ -1,5 +1,47 @@
 # CHANGELOG
 
+## v2.9.0
+
+### New features
+
+- Improved and updated security features.
+
+- Enhanced UI.
+
+- Added automatic state reports to improve debugging.
+
+  - The FCM will periodically call the `/state` endpoint, sending performance metrics and the state.
+
+### Fixes
+
+- Corrected a layout issue on the loading and error screens in Safari.
+
+- Fixed a minor misalignment of the loading page layout in Safari under specific circumstances.
+
+- Improved CSS isolation of text in the FCM. Text will no longer inherit the text-align property.
+
+- Improved accessibility
+
+  - Removed unnecessary element announced as “group” in some screen readers.
+
+- Fixed a runtime console warning.
+
+- Localisation has been revised. The following languages have been updated:
+  - `cs-CZ`
+  - `es-ES`
+  - `fr-FR`
+  - `hu-HU`
+  - `ms-MY` which is now alias of `ms-SG`
+  - `ms-SG`
+  - `sk-SK`
+  - `ta-TG`
+
+#### Peer dependencies updates
+
+- Updated `react` dependency version to be at least `16.14.0` and a maximum of `18.3.1`.
+
+- Updated `react-dom` dependency version to be at least `16.14.0` and a maximum of `18.3.1`.
+
 ## v2.8.1
 
 ### New features
@@ -12,6 +54,7 @@
 - Update UI component library to enhance theming stability.
 - Improve usability for keyboard only users.
 - Improve screen readers compatibility.
+- Fixed LICENCE.md text formatting
 
 ### Fixes
 
