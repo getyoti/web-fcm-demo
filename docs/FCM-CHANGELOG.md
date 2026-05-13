@@ -1,5 +1,34 @@
 # CHANGELOG
 
+## v2.9.1
+
+### New features
+
+- Implemented theming capabilities for customizing the border radius of different elements.
+
+  - Buttons
+    - `--fcm-button-border-radius-bottom-left`
+    - `--fcm-button-border-radius-bottom-right`
+    - `--fcm-button-border-radius-top-right`
+    - `--fcm-button-border-radius-top-left`
+  - Help dialogue
+    - `--fcm-help-panel-border-radius-bottom-left`
+    - `--fcm-help-panel-border-radius-bottom-right`
+    - `--fcm-help-panel-border-radius-top-right`
+    - `--fcm-help-panel-border-radius-top-left`
+  - User feedback
+    - `--fcm-feedback-border-radius-bottom-left`
+    - `--fcm-feedback-border-radius-bottom-right`
+    - `--fcm-feedback-border-radius-top-right`
+    - `--fcm-feedback-border-radius-top-left`
+
+- Add new localisation:
+  - `az-AZ`: Azerbaijani (Azerbaijan)
+  - `zh-TW`: Traditional Chinese (Taiwan)
+
+- Added a new theming capability to control the vertical offset of the user feedback (prompt) from the top edge on portrait devices (default: 0; percentage recommended):
+  - `--fcm-prompt-portrait-top`
+
 ## v2.9.0
 
 ### New features
@@ -58,7 +87,7 @@
 
 ### Fixes
 
-- Fix visual bug when taking a picture in manual mode. The feedback prompt is now highlighted correctly.
+- Fix visual bug when taking a picture in manual mode. The user feedback prompt is now highlighted correctly.
 
 ## v2.8.0
 
@@ -101,12 +130,12 @@ Multiframe is a new layer of protection added on top of the curren security feat
 
 - Adds a new prop `sessionDuration` which specifies the maximum duration of the session before it times out, regardless of number of retry attempts.
   - The value must be within 30s and 5m (in milliseconds), and invalid values will trigger an exception.
-- The icon for the multiple faces feedback was changed.
+- The icon for the multiple faces user feedback was changed.
 - `a11yLiveRegionMode` is now deprecated and will be removed in the next major release. Accessibility features like `aria-live` are now handled internally.
 
 ### Fixes
 
-- The feedback message is centred so the possibility of overlap with the face layout has been reduced.
+- The user feedback message is centred so the possibility of overlap with the face layout has been reduced.
 - Localisation has been revised. The following languages have been updated:
   - `bs-BA`: Bosnian
   - `sr-RS`: Serbian (Latin script)
@@ -337,7 +366,7 @@ Fixed an issue introduced in v2.3.0 causing the `numStableFrames` property to be
 
 - Improve security checks.
 - UI improvements on help dialogue.
-- Change feedback message for `OVERCONSTRAINED` and `NO_CAMERA` errors from
+- Change user feedback message for `OVERCONSTRAINED` and `NO_CAMERA` errors from
   `Please try again` to `Please try using a different device`.
 
 ### Fixes
@@ -365,7 +394,7 @@ See section [v2.0.0-beta.1](#v200-beta1) with previous changes for version
 
   - Improved the help dialogue UI.
 
-- Updated Tagalog localisation message for "Only one face allowed" feedback.
+- Updated Tagalog localisation message for "Only one face allowed" user feedback.
 
 ### Fixes
 
@@ -530,7 +559,7 @@ See section [v2.0.0-beta.1](#v200-beta1) with previous changes for version
 
 ### Fixes
 
-- Fix Greek localisation for "Place your face in the frame" feedback.
+- Fix Greek localisation for "Place your face in the frame" user feedback.
 
 ## v1.3.0
 
@@ -554,7 +583,7 @@ See section [v2.0.0-beta.1](#v200-beta1) with previous changes for version
 
 - Secure session initialisation request is no longer cached.
 - Added missing fields in the typing file.
-- Camera feedback messages are shown only after the camera permissions were
+- Camera user feedback messages are shown only after the camera permissions were
   giving not before.
 
 ## v1.2.0
@@ -574,7 +603,7 @@ See section [v2.0.0-beta.1](#v200-beta1) with previous changes for version
 
 - Fix the error when the FCM component is unmounted if it uses the secure mode.
 
-- Use the new Yoti colors for the button and overlay feedback.
+- Use the new Yoti colors for the button and overlay user feedback.
 
 ## v1.1.0
 
@@ -763,7 +792,7 @@ component.
 
 ### Fixes
 
-- Fix feedback message when the user is too close to the camera
+- Fix user feedback message when the user is too close to the camera
 
 - Fix state warning after component mounting
 
