@@ -1,9 +1,9 @@
 {
   "name": "web-fcm-demo",
-  "version": "2.9.0",
+  "version": "2.9.1",
   "private": false,
   "dependencies": {
-    "@getyoti/react-face-capture": "2.9.0",
+    "@getyoti/react-face-capture": "2.9.1",
     "body-parser": "2.2.2",
     "classnames": "2.5.1",
     "dotenv-flow": "4.1.0",
@@ -11,7 +11,7 @@
     "morgan": "1.10.1",
     "react": "16.14.0",
     "react-dom": "16.14.0",
-    "yoti": "4.12.2"
+    "yoti": "4.13.1"
   },
   "scripts": {
     "dev": "vite --host --open",
