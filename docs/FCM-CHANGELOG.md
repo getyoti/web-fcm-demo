@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v2.9.2
+
+### Fixes
+
+- Fixed a bug causing the FCM to sometimes freeze after taking the picture.
+
 ## v2.9.1
 
 ### New features
