@@ -1,5 +1,37 @@
 # CHANGELOG
 
+## v2.10.0
+
+### New features
+
+- Added `onManualFallback` callback to provide a way for the integrators to know when the module falls back from auto to manual capture mode.
+- Added `portraitAspectRatio` property to control the visual presentation and ratio of the UI.
+  The possible values for the new property are:
+
+  - `9/16`
+  - `10/16`
+
+- Added validation for the `format` property so that only supported formats can be specified, throws an error otherwise
+- Improved and updated security features.
+
+#### UI/UX
+
+- Updated iconography in the initial guidance screen.
+- Localisation has been revised. The following languages have been updated:
+  - `sr-RS`
+- If there is an error, the Help Dialogue is closed.
+- Added a new virtual background notice in the Help screens.
+
+### Fixes
+
+- Improved loading and capture process stability.
+- Improved stale sessions cancellation.
+- Fixed a bug preventing the FCM from running in React Strict Mode.
+- Error screen is shown properly on Safari if the camera permission is turned off.
+- Fixed some cases where the error screen was not shown if the mode is manual and the user removes the camera permission.
+- Fixed a scenario where the image was taken, the user went away, the user came back, and the FCM was not restarted.
+- Fixed margin for help dialog close button.
+
 ## v2.9.2
 
 ### Fixes
