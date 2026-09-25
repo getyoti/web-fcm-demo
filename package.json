@@ -1,9 +1,9 @@
 {
   "name": "web-fcm-demo",
-  "version": "2.9.2",
+  "version": "2.10.0",
   "private": false,
   "dependencies": {
-    "@getyoti/react-face-capture": "2.9.2",
+    "@getyoti/react-face-capture": "2.10.0",
     "body-parser": "2.2.2",
     "classnames": "2.5.1",
     "dotenv-flow": "4.1.0",
