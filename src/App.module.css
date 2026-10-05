@@ -25,8 +25,28 @@
 }
 
 .faceCaptureWrapper {
-    border-radius: 20px;
+    position: relative;
     overflow: hidden;
+}
+
+/*
+ * (Firefox only)
+ * The camera video inside FCM is mirrored (transform: scaleX(-1)),
+ * so it gets its own compositor layer and Firefox clips those as a rectangle.
+ * A border-radius here does nothing: you still see the black square corners.
+ *
+ * We cannot touch the video, it lives in FCM's shadow root and there is no
+ * custom property for the camera pane. So instead of clipping we paint on top:
+ * the box-shadow fills everything around the rounded rect and overflow: hidden
+ * cuts it back to the wrapper, so only the corners are left.
+ */
+.faceCaptureWrapper::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 20px;
+    box-shadow: 0 0 0 999px #fff;
+    pointer-events: none;
 }
 
 .img {
