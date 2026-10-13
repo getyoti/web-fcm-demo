@@ -1,5 +1,11 @@
 # CHANGELOG
 
+## v2.10.1
+
+### Fixes
+
+- Fixed `portraitAspectRatio` not being propagated correctly
+
 ## v2.10.0
 
 ### New features
