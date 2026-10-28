@@ -1,5 +1,22 @@
 # CHANGELOG
 
+## v2.11.0
+
+### Notices
+
+- Updated the minimum supported Node.js version to `24.22.1` (and npm to `11.19.0`) to address security vulnerabilities in earlier Node.js releases.
+
+### New features
+
+- Added new localisation:
+  - `sq-AL`: Albanian
+  - `mk-MK`: Macedonian
+  - `cnr-ME`: Montenegrin (also available as `sr-Latn-ME`)
+
+#### Theming
+
+- Added `--fcm-border-radius` CSS variable to set the radius of the module's corners. Defaults to `0` (square).
+
 ## v2.10.1
 
 ### Fixes
