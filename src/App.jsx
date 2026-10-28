@@ -18,7 +18,7 @@ const App = () => {
   const [error, setError] = useState();
 
   const predict = async (body, multiframe) =>
-    fetch(`/api/predict${multiframe ? "?multiframe=true" : "" }`, {
+    fetch(`/api/predict${multiframe ? "?multiframe=true" : ""}`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -73,16 +73,14 @@ const App = () => {
     <div className={styles.scanContainer}>
       {!image ? (
         <div className={styles.scanContainer}>
-          <div className={styles.faceCaptureWrapper}>
-            <FaceCapture
-              clientSdkId={process.env.SDK_ID}
-              multiframe={multiframeFlag}
-              onError={onError}
-              onSuccess={onSuccess}
-              returnPreviewImage
-              secure={secureFlag}
-            />
-          </div>
+          <FaceCapture
+            clientSdkId={process.env.SDK_ID}
+            multiframe={multiframeFlag}
+            onError={onError}
+            onSuccess={onSuccess}
+            returnPreviewImage
+            secure={secureFlag}
+          />
           <div className={styles.optionsDiv}>
             <SecureField currentValue={secureFlag} onChange={setSecureFlag} />
             <MultiframeField currentValue={multiframeFlag} onChange={setMultiframeFlag} secureValue={secureFlag} />

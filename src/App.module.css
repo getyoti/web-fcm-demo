@@ -1,5 +1,6 @@
 :root {
     padding-top: 24px;
+    --fcm-border-radius: 20px;
 }
 
 .scanContainer {
@@ -22,11 +23,6 @@
     align-items: center;
     width: 50vw;
     margin: auto;
-}
-
-.faceCaptureWrapper {
-    border-radius: 20px;
-    overflow: hidden;
 }
 
 .img {
