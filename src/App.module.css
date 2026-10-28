@@ -1,5 +1,6 @@
 :root {
     padding-top: 24px;
+    --fcm-border-radius: 20px;
 }
 
 .scanContainer {
