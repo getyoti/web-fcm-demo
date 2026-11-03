@@ -105,3 +105,7 @@ Use the secure flag to ensure the image can't be changed once is taken. Have in 
 The `Yoti NodeJS SDK` package allows to integrate a NodeJS back-end with Yoti apps. The usage of this package to perform predictions to a Yoti app can be found in the `server.ts` file (TypeScript source) or `dist/server.js` (compiled JavaScript). For more information about this package, check [this link](https://www.npmjs.com/package/yoti).
 
 Level of assurance is an optional parameter of the Yoti antispoofing API used to determine the strictness of the check.
+
+## Known Issues
+
+- `minimatch` dev dependency added to `package.json`'s `overrides` until `eslint-plugin-import` and `eslint-plugin-react` call the minimatch v3 API
