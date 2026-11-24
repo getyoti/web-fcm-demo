@@ -1,5 +1,15 @@
 # CHANGELOG
 
+## v2.11.1
+
+### New features
+
+#### UI/UX
+
+- Localisation has been revised. The following languages have been updated:
+  - `bg-BG`
+
+
 ## v2.11.0
 
 ### Notices
